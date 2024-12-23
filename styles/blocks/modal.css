@@ -1,0 +1,74 @@
+#formContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.726);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#formContainer.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form {
+    background: var(--);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#submitLogin,
+#closeForm,
+#submitRegister {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    color: var(--gray);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submitLogin:hover,
+#closeForm:hover,
+#submitRegister:hover {
+    background-color: var(--brand-color);
+    color: var(--white);
+}
+
+.hidden {
+    display: none;
+}

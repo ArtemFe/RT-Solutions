@@ -1,5 +1,5 @@
 .about {
-    background: #3C59F1;
+    background: var(--brand-color);
     padding: 76px 0;
     min-height: 800px;
 

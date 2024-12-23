@@ -112,11 +112,21 @@
 	gap: 60px;
 }
 
+.menu-item{
+	padding: 8px;
+	color: var(--white);
+	transition: all 0.5s;
+}
+
+.menu-item:hover{
+	border-bottom: 1px solid var(--white);
+}
+
 .right-wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 52px;
+	gap: 20px;
 }
 
 .right-wrapper button {
@@ -125,11 +135,21 @@
 }
 
 .right-btn{
+	padding: 8px 12px;
+	border: 1px solid var(--brand-color);
+	border-radius: 20px;
 	color: var(--white);
 	font-size: 14px;
+	transition: all 0.3s;
+}
+
+.right-btn:hover{
+	border: 1px solid var(--white);
+
 }
 
 .header-bottom {
+	margin-top: 30px;
 	height: 80px;
 }
 
@@ -187,44 +207,8 @@
 	background-color: var(--blue-color);
 }
 
-.slider {
-	position: relative;
-	max-width: 1920px;
-	margin: 0 auto;
-}
-
-.slider-control {
-	position: absolute;
-	bottom: 20px;
-	left: 50%;
-}
-
-input[type="radio"] {
-	appearance: none;
-	background: var(--white);
-	outline: 1px solid var(--dark-blue);
-	width: 10px;
-	height: 10px;
-}
-
-input[type="radio"]:checked {
-	background: var(--dark-blue);
-	outline: 1px solid var(--dark-blue);
-}
-
-#i1,
-#i2 {
-	margin-right: 12px;
-}
-
-#changeImage {
-	width: 1920px;
-	height: 600px;
-	transition: all .2s;
-}
-
 .rent {
-	margin-top: 40px;
+	margin-top: 60px;
 	margin-bottom: 60px;
 }
 
@@ -301,9 +285,9 @@ input[type="radio"]:checked {
 .conference:hover,
 .construction:hover,
 .event:hover {
-	background: #3C59F1;
+	background: var(--brand-color);
 	transition: 0.2s all;
-	color: #fff;
+	color: var(--white);
 }
 
 .camera img,
