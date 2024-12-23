@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentTech | Главная</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-top">
+            <div class="contain header-wrapper">
+                <div class="left-wrapper">
+                    <a class="logo" href="index.html">RentTech</a>
+                    <div class="menu text-header">
+                        <a href="pages/catalog.html" class="menu-item">Каталог</a>
+                        <a href="pages/about.html" class="menu-item">О компании</a>
+                        <a href="#" class="menu-item">Поддержка</a>
+                    </div>
+                </div>
+                <div class="right-wrapper">
+                    <select id="city">
+                        <option selected>Оренбург</option>
+                        <option>Москва</option>
+                        <option>Санкт-Петербург</option>
+                        <option>Новосибирск</option>
+                        <option>Краснодар</option>
+                        <option>Екатеринбург</option>
+                        <option>Казань</option>
+                        <option>Уфа</option>
+                        <option>Нижний Новгород</option>
+                        <option>Челябинск</option>
+                        <option>Самара</option>
+                        <option>Ростов-на-Дону</option>
+                        <option>Омск</option>
+                        <option>Красноярск</option>
+                        <option>Воронеж</option>
+                        <option>Пермь</option>
+                        <option>Волгоград</option>
+                        <option>Владивосток</option>
+                    </select>
+                    <button><img src="images/heart.svg"></button>
+                    <button><img src="images/cart.svg"></button>
+                    <button><img src="images/user.svg"></button>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="contain">
+                <button class="text-p" id="categories"><img src="images/menu.png">категории</button>
+                <div class="search-wrapper">
+                    <input class="search text-p">
+                    <button class="button-search text-p">Поиск</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="slider swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slider__slide">
+                <ul class="productCards">
+                    <li class="productCard">
+                        <div class="productCard__img">
+                            <a href="./pages/product.html"></a>
+                            <img src="./images/card-1.png" alt="card-1">
+                        </div>
+                        <span class="productCard__title">Перфоратор ЭнергоПром</span>
+                        <div class="hit-actions productCard__actions">
+                            <button id="add-cart">Добавить в корзину</button>
+                            <button id="add-favorites"><img src="images/heart2.png"></button>
+                        </div>
+                    </li>
+                    <li class="productCard">
+                        <div class="productCard__img">
+                            <a href="./pages/product.html"></a>
+                            <img src="./images/card-2.png" alt="card-2">
+                        </div>
+                        <span class="productCard__title">Отбойный молоток Bosch</span>
+                        <div class="hit-actions productCard__actions">
+                            <button id="add-cart">Добавить в корзину</button>
+                            <button id="add-favorites"><img src="images/heart2.png"></button>
+                        </div>
+                    </li>
+                    <li class="productCard">
+                        <div class="productCard__img">
+                            <a href="./pages/product.html"></a>
+                            <img src="./images/card-3.png" alt="card-3">
+                        </div>
+                        <span class="productCard__title">Лазерный сюрвейер</span>
+                        <div class="hit-actions productCard__actions">
+                            <button id="add-cart">Добавить в корзину</button>
+                            <button id="add-favorites"><img src="images/heart2.png"></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="swiper-slide slider__slide">
+                <img src="images/slider-i1.jpg" id="changeImage">
+            </div>
+        </div>
+
+        <div class="slider-pagination swiper-pagination">
+            <div class="swiper-pagination-bullet"></div>
+            <div class="swiper-pagination-bullet"></div>
+        </div>
+    </section>
+    <section class="rent contain">
+        <div class="rent-top">
+            <h1 class="rent-title text-h1">Мы предлагаем<br>в аренду</h1>
+            <div class="rent-categories">
+                <div class="construction">
+                    <h2 class="construction-title text-h2">Строительная техника</h2>
+                    <img src="images/construction.png" alt="">
+                </div>
+                <div class="event">
+                    <h2 class="event-title text-h2">Техника для мероприятий</h2>
+                    <img src="images/event.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="rent-bottom">
+            <div class="camera">
+                <h2 class="camera-title text-h2">Камеры</h2>
+                <img src="images/camera.png" alt="">
+            </div>
+            <div class="projector">
+                <h2 class="projector-title text-h2">Проекторы</h2>
+                <img src="images/project.png" alt="">
+            </div>
+            <div class="cleaner">
+                <h2 class="cleaner-title text-h2">Пылесосы</h2>
+                <img src="images/cleaner.png" alt="">
+            </div>
+            <div class="conference">
+                <h2 class="conference-title text-h2">Видеоконференц-<br>оборудование</h2>
+                <img src="images/conference.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="hits">
+        <div class="contain">
+            <h1 class="hits-title text-h1">Хиты аренд</h1>
+            <div class="hits-list">
+                <div class="hits-item">
+                    <div class="hits-image">
+                        <img src="images/gopro.png">
+                    </div>
+                    <div class="hit-info">
+                        <p class="hit-name text-p"><strong>Gopro Hero 7 Black</strong></p>
+                        <p class="text-p">Цена: от <strong style="color: var(--gray-hit-price);">210 ₽/сутки</strong>
+                        </p>
+                    </div>
+                    <div class="hit-actions dop">
+                        <button id="add-cart">Добавить в корзину</button>
+                        <button id="add-favorites"><img src="images/heart2.png"></button>
+                    </div>
+                </div>
+                <div class="hits-item">
+                    <div class="hits-image">
+                        <img src="images/zoom.png">
+                    </div>
+                    <div class="hit-info">
+                        <p class="hit-name text-p"><strong>Портативный рекордер (микрофон для записи) Zoom H1</strong>
+                        </p>
+                        <p class="text-p">Цена: от <strong style="color: var(--gray-hit-price);">100 ₽/сутки</strong>
+                        </p>
+                    </div>
+                    <div class="hit-actions dop">
+                        <button id="add-cart">Добавить в корзину</button>
+                        <button id="add-favorites"><img src="images/heart2.png"></button>
+                    </div>
+                </div>
+                <div class="hits-item">
+                    <div class="hits-image">
+                        <img src="images/dji.png">
+                    </div>
+                    <div class="hit-info">
+                        <p class="hit-name text-p"><strong>Квадрокоптер DJI Mavic 2 Pro</strong></p>
+                        <p class="text-p">Цена: от <strong style="color: var(--gray-hit-price);">1050 ₽/сутки</strong>
+                        </p>
+                    </div>
+                    <div class="hit-actions dop">
+                        <button id="add-cart">Добавить в корзину</button>
+                        <button id="add-favorites"><img src="images/heart2.png"></button>
+                    </div>
+                </div>
+                <div class="hits-item dop">
+                    <div class="hits-image">
+                        <img src="images/project.png" id="project-mirror">
+                    </div>
+                    <div class="hit-info">
+                        <p class="hit-name text-p"><strong>Проектор</strong></p>
+                        <p class="text-p">Цена: от <strong style="color: var(--gray-hit-price);">350 ₽/сутки</strong>
+                        </p>
+                    </div>
+                    <div class="hit-actions">
+                        <button id="add-cart">Добавить в корзину</button>
+                        <button id="add-favorites"><img src="images/heart2.png"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="feedback">
+        <div class="partners">
+            <img src="images/arrow-left-slider.svg" id="leftslider" onclick="slideleft()">
+            <div class="partners-slider" id="partners-slider">
+                <img src="images/intel.svg">
+                <img src="images/lg.svg">
+                <img src="images/lenovo.svg">
+                <img src="images/canon.svg">
+                <img src="images/hp.svg">
+                <img src="images/epson.svg">
+                <img src="images/xiaomi.svg">
+                <img src="images/britax.svg">
+                <img src="images/amd.svg" width="160">
+            </div>
+            <img src="images/arrow-right-slider.svg" id="rightslider" onclick="slideright()">
+        </div>
+        <section class="reviews" style="margin-top: 60px;">
+            <center>
+                <h1 class="revies-title text-h1 wrapper">Отзывы</h1>
+            </center>
+            <div class="reviews-top contain">
+                <button class="review-button">Отзывы</button>
+                <img src="images/google.svg">
+                <img src="images/map_point.svg">
+            </div>
+            <p class="contain count-reviews text-p">120 отзывов из 2 источников</p>
+            <div class="reviews-bottom">
+                <img src="images/arrow-left-slider.svg" id="leftreviewslider" onclick="review_left()">
+                <div class="reviews-slider" id="reviews-slider">
+                    <div class="review-slider-wrapper">
+                        <div class="review-item">
+                            <div class="review-top-container">
+                                <div class="review-info">
+                                    <div class="stars">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star-empty.svg">
+                                    </div>
+                                    <div class="review-user">
+                                        <p class="text-20">Михаил</p>
+                                        <p class="review-date text-14">14 сент. 2024</p>
+                                    </div>
+                                </div>
+                                <img src="images/avatar0.png">
+                            </div>
+                            <div class="review-bottom-container none-detail">
+                                <p class="text-p">Отличная фирма. Есть много всего и цены отличные! Арендовал
+                                    автобокс-Все
+                                    показали и разъяснили, помогли установить! Территориально- находятся в хорошем и
+                                    удобном
+                                    районе. Остался очень доволен.</p> 
+                                <p class="review-yandex text-14"><a href="#" class="review-yandex text-14">Отзыв из Яндекс</a></p>
+                            </div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-top-container">
+                                <div class="review-info">
+                                    <div class="stars">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star-empty.svg">
+                                    </div>
+                                    <div class="review-user">
+                                        <p class="text-20">Дмитрий</p>
+                                        <p class="review-date text-14">14 сент. 2024</p>
+                                    </div>
+                                </div>
+                                <div class="avatar1 text-avatar">Д</div>
+                            </div>
+                            <div class="review-bottom-container">
+                                <p class="review-text detail text-p">Заказывал две PS4 и два диска Mortal Combat X.
+                                    Глобально один балл забрало время возврата, когда курьер может приехать за товаром -
+                                    слишком большой разброс. Лучше сделать промежутки не по три часа, а...</p>
+                                <p class="review-detail text-p">Подробнее</p>
+                                <p class="review-yandex text-14"><a href="#" class="review-yandex text-14">Отзыв из Яндекс</a></p>
+                            </div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-top-container">
+                                <div class="review-info">
+                                    <div class="stars">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star-empty.svg">
+                                    </div>
+                                    <div class="review-user">
+                                        <p class="text-20">Светлана</p>
+                                        <p class="review-date text-14">14 сент. 2024</p>
+                                    </div>
+                                </div>
+                                <img src="images/avatar1.png">
+                            </div>
+                            <div class="review-bottom-container">
+                                <p class="review-text text-p">Брала в аренду пылесос Karcher Se 6001. Со своей задачей
+                                    справился, отлично отмыл мягкое кресло от пятен и собрал кошачью шерсть. Будем
+                                    обязательно пользоваться прокатом. Очень удобно, большой выбор техники, менеджер
+                                    объяс...</p>
+                                <p class="review-detail text-p">Подробнее</p>
+                                <p class="review-yandex text-14"><a href="#" class="review-yandex text-14">Отзыв из Яндекс</a></p>
+                            </div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-top-container">
+                                <div class="review-info">
+                                    <div class="stars">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star-empty.svg">
+                                    </div>
+                                    <div class="review-user">
+                                        <p class="text-20">Сергей</p>
+                                        <p class="review-date text-14">14 сент. 2024</p>
+                                    </div>
+                                </div>
+                                <img src="images/avatar2.png">
+                            </div>
+                            <div class="review-bottom-container none-detail">
+                                <p class="text-p">Хорошее место. Брал велосипед на месяц, консультанты разбирающиеся и
+                                    понимающие</p>
+                                    <p class="review-yandex text-14"><a href="#" class="review-yandex text-14">Отзыв из Яндекс</a></p>
+                            </div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-top-container">
+                                <div class="review-info">
+                                    <div class="stars">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star.svg">
+                                        <img src="images/star-empty.svg">
+                                    </div>
+                                    <div class="review-user">
+                                        <p class="text-20">Дима</p>
+                                        <p class="review-date text-14">14 сент. 2024</p>
+                                    </div>
+                                </div>
+                                <div class="avatar1 text-avatar">Д</div>
+                            </div>
+                            <div class="review-bottom-container none-detail">
+                                <p class="text-p">Все норм</p>
+                                <p class="review-yandex text-14">Отзыв из Яндекс</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/arrow-right-slider.svg" id="rightreviewslider" onclick="review_right()">
+            </div>
+        </section>
+        <footer>
+            <div class="footer-wrapper contain">
+                <div class="footer-list">
+                    <div class="footer-item">
+                        <a class="logo" href="#">RentTech</a>
+                        <a class="text-p footer-menu-item" href="#">Главная</a>
+                        <a class="text-p footer-menu-item" href="#">Каталог</a>
+                        <a class="text-p footer-menu-item" href="#">О нас</a>
+                        <a class="text-p footer-menu-item" href="#">Личный кабинет</a>
+                        <a class="text-p footer-menu-item" href="#">Помощь</a>
+                    </div>
+                    <div class="footer-item">
+                        <a class="footer-title text-20" href="#">Компания</a>
+                        <a class="text-p footer-menu-item" href="#">Доставка и оплата</a>
+                        <a class="text-p footer-menu-item" href="#">Как это работает</a>
+                        <a class="text-p footer-menu-item" href="#">Условия аренды</a>
+                        <a class="text-p footer-menu-item" href="#">Защита</a>
+                        <a class="text-p footer-menu-item" href="#">Вопросы и ответы</a>
+                    </div>
+                    <div class="footer-item">
+                        <a class="footer-title text-20" href="#">Каталог</a>
+                        <a class="text-p footer-menu-item" href="#">Камеры</a>
+                        <a class="text-p footer-menu-item" href="#">Объективы</a>
+                        <a class="text-p footer-menu-item" href="#">Портативные колонки</a>
+                        <a class="text-p footer-menu-item" href="#">Диджей установки</a>
+                        <a class="text-p footer-menu-item" href="#">Строй инструменты</a>
+                        <a class="text-p footer-menu-item" href="#">Пылесосы, уборка и клиннинг</a>
+                    </div>
+                    <div class="pay">
+                        <a class="footer-title text-20" style="padding: 0px;">Все сделки защищены</a>
+                        <div class="pay-logo">
+                            <img src="../images/mir.png">
+                            <img src="../images/mastercard.png">
+                            <img src="../images/visa.png">
+                            <img src="../images/unionpay.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div>
+                        <div class="footer-name">
+                            <a class="footer-title text-20" style="padding: 0px;">Подпишись</a>
+                            <a class="text-p">Будь в курсе всех новинок и предложений!</a>
+                        </div>
+                        <div class="email">
+                            <div class="email-actions">
+                                <input type="email" class="email-input text-p" placeholder="Введите ваш E-mail">
+                                <button class="email-button"><img src="../images/arrow-email.svg"></button>
+                            </div>
+                            <div class="confirmed">
+                                <input type="checkbox">
+                                <a class="text-14">согласен с условиями соглашения</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-socials">
+                        <div class="socials">
+                            <a href="#"><img src="../images/vk.svg"></a>
+                            <a href="#"><img src="../images/tg.svg"></a>
+                            <a href="#"><img src="../images/whatsapp.svg"></a>
+                        </div>
+                        <p class="footer-description">2022-2024 с renttech.ru — онлайн сервис аренды техники. Все права
+                            защищены. ООО «RentTech», Юридический адрес: 460000, Оренбург, ул. Чкалова, д.1/1, стр.1,
+                            этаж
+                            2, комната 23</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </footer>
+        <script src="home-slider.js"></script>
+        <script type="module">
+            import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+            const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+            bullets[0].classList.add('swiper-pagination-bullet-active');
+
+            const swiper = new Swiper(".swiper", {
+                pagination: {
+                    bulletClass: '.swiper-pagination-bullet',
+                    bulletClassActive: '.swiper-pagination-bullet-active'
+                },
+            });
+
+            swiper.on('slideChange', slider => {
+                bullets.forEach(bullet => bullet.classList.remove('swiper-pagination-bullet-active'));
+                bullets[slider.activeIndex].classList.add('swiper-pagination-bullet-active');
+            })
+        </script>
+</body>
+
+</html>

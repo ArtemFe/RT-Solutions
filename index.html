@@ -1,11 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RT.Solutions</title>
+    <title>RT Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
+    <header>
+        <div class="header-top">
+            <div class="contain header-wrapper">
+                <div class="left-wrapper">
+                    <a class="logo" href="index.html">RT.Solutions</a>
+                    <div class="menu text-header">
+                        <a href="#" class="menu-item">Главная</a>
+                        <a href="#" class="menu-item">Каталог</a>
+                    </div>
+                </div>
+                <div class="right-wrapper">
+                    <button><a href="#" class="right-btn">Регистрация</a></button>
+                    <button><a href="#" class="right-btn">Вход</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="contain">
+                <div class="search-wrapper">
+                    <input class="search text-p" placeholder="Введите название оборудования, который вы ищете">
+                    <button class="button-search text-p">Поиск</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="rent contain">
+        <div class="rent-top">
+            <h1 class="rent-title text-h1">Мы предлагаем<br>в аренду</h1>
+            <div class="rent-categories">
+                <div class="construction">
+                    <h2 class="construction-title text-h2">Строительная техника</h2>
+                    <img src="images/construction.png" alt="" class="rent-img">
+                </div>
+                <div class="event">
+                    <h2 class="event-title text-h2">Техника для мероприятий</h2>
+                    <img src="images/event.png" alt="" class="rent-img">
+                </div>
+            </div>
+        </div>
+        <div class="rent-bottom">
+            <div class="camera">
+                <h2 class="camera-title text-h2">Камеры</h2>
+                <img src="images/camera.png" alt="" class="rent-img">
+            </div>
+            <div class="projector">
+                <h2 class="projector-title text-h2">Проекторы</h2>
+                <img src="images/project.png" alt="" class="rent-img">
+            </div>
+            <div class="cleaner">
+                <h2 class="cleaner-title text-h2">Пылесосы</h2>
+                <img src="images/cleaner.png" alt="" class="rent-img">
+            </div>
+            <div class="conference">
+                <h2 class="conference-title text-h2">Видеоконференц-<br>оборудование</h2>
+                <img src="images/conference.png" alt="" class="rent-img">
+            </div>
+        </div>
+    </section>
     
+    <section class="feedback">
+            <section class="about">
+                <div class="contain">
+                    <div class="about__top">
+                        <h1 class="about__title">О нас</h1>
+                        <p class="about__desc">
+                            RT Solutions — это платформа для аренды профессионального оборудования, которая
+                            соединяет владельцев техники с теми, кому она нужна. Мы предлагаем широкий выбор техники для бизнеса
+                            и
+                            личных нужд, гарантируя качество и надёжность каждой сделки.
+                        </p>
+                    </div>
+                    <a class="about__logo logo" id="logo" href="/">RT Solutions</a>
+                    <div class="about__bottom">
+                        <h2 class="about__title">История</h2>
+                        <p class="about__desc">
+                            RT Solutions была основана в 2022 году группой специалистов, которые поняли,
+                            что многие компании и индивидуальные предприниматели сталкиваются
+                            с необходимостью краткосрочной аренды оборудования. Мы начали
+                            с небольшой базы техники и постепенно расширили наш каталог, чтобы охватить разные отрасли — от
+                            строительства до IT и мероприятий.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="contain team">
+                <h2 class="team__title">Наша команда</h2>
+                <ul class="team__list">
+                    <li class="team__item">
+                        <img src="../images/team-1.jpg" alt="team 1">
+                        <span class="team__title">Мария Петрова</span>
+                        <p class="team__desc">
+                            Руководитель службы поддержки. Специалист по взаимодействию с клиентами.
+                        </p>
+                    </li>
+                    <li class="team__item team__item--lg">
+                        <img src="../images/team-2.jpg" alt="team 1">
+                        <span class="team__title">Иван Смирнов</span>
+                        <p class="team__desc">
+                            CEO и основатель. Опыт более 10 лет в сфере аренды и логистики.
+                        </p>
+                    </li>
+                    <li class="team__item">
+                        <img src="../images/team-3.jpg" alt="team 1">
+                        <span class="team__title">Александр Васильев</span>
+                        <p class="team__desc">
+                            Руководитель по работе с арендодателями. Специалист по развитию сотрудничества.
+                        </p>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <footer>
+            <div class="footer-wrapper contain">
+                <div class="footer-list">
+                    <div class="footer-item">
+                        <a class="logo" href="#">RT Solutions</a>
+                        <a class="text-p footer-menu-item" href="#">Главная</a>
+                        <a class="text-p footer-menu-item" href="#">Каталог</a>
+                        <a class="text-p footer-menu-item" href="#">О нас</a>
+                        <a class="text-p footer-menu-item" href="#">Личный кабинет</a>
+                        <a class="text-p footer-menu-item" href="#">Помощь</a>
+                    </div>
+                    <div class="footer-item">
+                        <a class="footer-title text-20" href="#">Компания</a>
+                        <a class="text-p footer-menu-item" href="#">Доставка и оплата</a>
+                        <a class="text-p footer-menu-item" href="#">Как это работает</a>
+                        <a class="text-p footer-menu-item" href="#">Условия аренды</a>
+                        <a class="text-p footer-menu-item" href="#">Защита</a>
+                        <a class="text-p footer-menu-item" href="#">Вопросы и ответы</a>
+                    </div>
+                    <div class="footer-item">
+                        <a class="footer-title text-20" href="#">Каталог</a>
+                        <a class="text-p footer-menu-item" href="#">Камеры</a>
+                        <a class="text-p footer-menu-item" href="#">Объективы</a>
+                        <a class="text-p footer-menu-item" href="#">Портативные колонки</a>
+                        <a class="text-p footer-menu-item" href="#">Диджей установки</a>
+                        <a class="text-p footer-menu-item" href="#">Строй инструменты</a>
+                        <a class="text-p footer-menu-item" href="#">Пылесосы, уборка и клиннинг</a>
+                    </div>
+                    <div class="pay">
+                        <a class="footer-title text-20" style="padding: 0px;">Все сделки защищены</a>
+                        <div class="pay-logo">
+                            <img src="../images/mir.png">
+                            <img src="../images/mastercard.png">
+                            <img src="../images/visa.png">
+                            <img src="../images/unionpay.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div>
+                        <div class="footer-name">
+                            <a class="footer-title text-20" style="padding: 0px;">Подпишись</a>
+                            <a class="text-p">Будь в курсе всех новинок и предложений!</a>
+                        </div>
+                        <div class="email">
+                            <div class="email-actions">
+                                <input type="email" class="email-input text-p" placeholder="Введите ваш E-mail">
+                                <button class="email-button"><img src="../images/arrow-email.svg"></button>
+                            </div>
+                            <div class="confirmed">
+                                <input type="checkbox">
+                                <a class="text-14">согласен с условиями соглашения</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-socials">
+                        <div class="socials">
+                            <a href="#"><img src="../images/vk.svg"></a>
+                            <a href="#"><img src="../images/tg.svg"></a>
+                            <a href="#"><img src="../images/whatsapp.svg"></a>
+                        </div>
+                        <p class="footer-description">2022-2024 с rt.solutions.ru — онлайн сервис аренды техники. Все права
+                            защищены. ООО «RT Solutions», Юридический адрес: 460000, Оренбург, ул. Чкалова, д.1/1, стр.1,
+                            этаж
+                            2, комната 23</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </footer>
+        <script src="home-slider.js"></script>
+        <script type="module">
+            import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+            const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+            bullets[0].classList.add('swiper-pagination-bullet-active');
+
+            const swiper = new Swiper(".swiper", {
+                pagination: {
+                    bulletClass: '.swiper-pagination-bullet',
+                    bulletClassActive: '.swiper-pagination-bullet-active'
+                },
+            });
+
+            swiper.on('slideChange', slider => {
+                bullets.forEach(bullet => bullet.classList.remove('swiper-pagination-bullet-active'));
+                bullets[slider.activeIndex].classList.add('swiper-pagination-bullet-active');
+            })
+        </script>
 </body>
+
 </html>
