@@ -1,0 +1,43 @@
+.desc {
+    margin-top: 20px;
+    padding: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    border-top: 1px solid #C1C1C1;
+    border-bottom: 1px solid #C1C1C1;
+}
+
+.desc__buttons {
+    display: flex;
+    gap: 94px;
+}
+
+.desc__button {
+    width: 266px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    border: 1px solid #000000;
+}
+
+.desc__button--active {
+    background: #3C59F1;
+    color: #fff;
+}
+
+.desc__text {
+    max-width: 885px;
+    
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+} 
