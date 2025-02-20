@@ -2,6 +2,44 @@
     margin-top: 35px;
 }
 
+.hits-image{
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #000 1px solid;
+}
+
+.hit-img{
+    height: 380px;
+}
+
+.cons{
+    height: 280px;
+}
+
+.hit-name{
+    margin-top: 8px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.category{
+    width: 240px;
+    height: 32px;
+    line-height: 16px;
+    margin-top: 4px;
+    color: var(--gray-hit-price);
+    font-size: 14px;
+}
+
+.price{
+    color: #000;
+    margin-top: 8px;
+    font-weight: 800;
+}
+
 .catalog__wrapper {
     display: flex;
     gap: 26px;
@@ -12,4 +50,28 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
+    margin-bottom: 80px;
+}
+
+.hit-actions{
+    width: 240px;
+    justify-content: space-between;
+    display: flex;
+    align-items:center ;
+    margin-top: 20px;
+}
+
+#add-cart{
+
+}
+
+.card{
+    position: relative;
+    width: 200px;
+}
+
+.heart{
+    width: 30px;
+    height: 30px;
+    background-color: white;
 }

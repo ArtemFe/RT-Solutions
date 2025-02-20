@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RT Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-top">
+            <div class="contain header-wrapper">
+                <div class="left-wrapper">
+                    <a class="logo" href="index.html">RT.Solutions</a>
+                    <div class="menu text-header">
+                        <a href="index.html" class="menu-item">Главная</a>
+                        <a href="catalog.html" class="menu-item">Каталог</a>
+                    </div>
+                </div>
+                <div class="right-wrapper">
+                    <button><a href="register.html" class="right-btn" id="registerBtn">Регистрация</a></button>
+                    <button><a href="login.html" class="right-btn" id="loginBtn">Вход</a></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="contain">
+        <div class="product">
+            <div class="product__sliderBlock">
+                <div class="swiper product__slider">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide product__slide">
+                            <img src="../images/drel1.webp" alt="slide 1">
+                        </div>
+                        <div class="swiper-slide product__slide">
+                            <img src="../images/drel2.webp" alt="slide 2">
+                        </div>
+                        <div class="swiper-slide product__slide">
+                            <img src="../images/drel3.webp" alt="slide 3">
+                        </div>
+                    </div>
+                    <button class="controls__button_prev product__prevSlide">
+                        <img src="../images/Vector 22.svg" alt="prev">
+                    </button>
+                    <button class="controls__button_next product__nextSlide">
+                        <img src="../images/Vector 21.svg" alt="next">
+                    </button>
+                </div>
+                <ul class="product__images">
+                    <li class="product__image">
+                        <img src="../images/drel1.webp" class="mini-img">
+                    </li>
+                    <li class="product__image">
+                        <img src="../images/drel2.webp" class="mini-img">
+                    </li>
+                    <li class="product__image">
+                        <img src="../images/drel3.webp" class="mini-img">
+                    </li>
+                </ul>
+            </div>
+            <div class="product__descBlock">
+                <h1 class="product__title">Дрель</h1>
+                
+                <div class="product__priceBlock">
+                    <span class="product__subtitle">Цена за одни сутки</span>
+                    <div class="product__price"><span>860</span> руб</div>
+                    <div class="product__countBlock">
+                        <span>Количество</span>
+                        <button>-</button>
+                        <span class="product__count">1</span>
+                        <button>+</button>
+                    </div>
+                </div>
+
+                <div class="product__dateSelect">
+                    <span>Выберите даты 
+                    </span>
+                    <div class="product__date">
+                        <h3>с</h3>
+                        <input type="date" name="date">
+                        <h3>до</h3>
+                        <input type="date" name="date">
+                    </div>
+                </div>
+
+                <div class="product__actions">
+                    <button class="product__button">Добавить в корзину</button>
+                    <button class="product__button product__button--favorites"><img src="../images/heart2.png"
+                            alt="Добавить в избранное"></button>
+                </div>
+                <div class="product__infoBlock">
+                    <div class="product__infoItem">
+                        <span class="product__infoItemName">Доставка и самовывоз:</span>
+                        <ul class="product__infoItemValues">
+                            <li class="product__infoItemValue">
+                                <span>Забрать сегодня</span>
+                                <img src="../images/dots.png" alt="dots">
+                                <span>бесплатно</span>
+                            </li>
+                            <li class="product__infoItemValue">
+                                <span>Доставим завтра</span>
+                                <img src="../images/dots.png" alt="dots">
+                                <span>бесплатно</span>
+                            </li>
+                            <li class="product__infoItemValue">
+                                <span>Доставим сегодня</span>
+                                <img src="../images/dots.png" alt="dots">
+                                <span>от 399 руб</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="product__infoItem">
+                        <span class="product__infoItemName">Как вернуть:</span>
+                        <ul class="product__infoItemValues">
+                            <li class="product__infoItemValue">
+                                <span>Вернуть самому</span>
+                                <img src="../images/dots.png" alt="dots">
+                                <span>бесплатно</span>
+                            </li>
+                            <li class="product__infoItemValue">
+                                <span>Заберет курьер</span>
+                                <img src="../images/dots.png" alt="dots">
+                                <span>бесплатно</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contain desc">
+        <div class="desc__buttons">
+            <button class="desc__button desc__button--active">Описание товара</button>
+            <button class="desc__button">Характеристики</button>
+            <button class="desc__button">Комплектация</button>
+        </div>
+        <p class="desc__text">Для строительства, ремонта и монтажа вам пригодится аренда мощной электрической дрели. Она подходит для сверления отверстий в дереве, металле, пластике и бетоне. Дрель оснащена регулировкой скорости, реверсом и быстрозажимным патроном, что делает её универсальным инструментом для любых задач.</p>
+        <p class="desc__text">Без перегрева дрель работает несколько часов, а эргономичная рукоятка обеспечивает комфорт даже при длительном использовании. В комплекте идут сменные сверла для разных материалов.</p>
+        <p class="desc__text">Аренда дрели в нашем сервисе стоит от 860 руб в сутки. Доставка по городу, в том числе за пределы центра, рассчитывается отдельно.</p>
+    </section>
+    
+    <footer>
+        <div class="footer-wrapper contain">
+            <div class="footer-list">
+                <div class="footer-item">
+                    <a class="logo" href="#">RT Solutions</a>
+                    <a class="text-p footer-menu-item" href="#">Главная</a>
+                    <a class="text-p footer-menu-item" href="#">Каталог</a>
+                    <a class="text-p footer-menu-item" href="#">О нас</a>
+                    <a class="text-p footer-menu-item" href="#">Личный кабинет</a>
+                    <a class="text-p footer-menu-item" href="#">Помощь</a>
+                </div>
+                <div class="footer-item">
+                    <a class="footer-title text-20" href="#">Компания</a>
+                    <a class="text-p footer-menu-item" href="#">Доставка и оплата</a>
+                    <a class="text-p footer-menu-item" href="#">Как это работает</a>
+                    <a class="text-p footer-menu-item" href="#">Условия аренды</a>
+                    <a class="text-p footer-menu-item" href="#">Защита</a>
+                    <a class="text-p footer-menu-item" href="#">Вопросы и ответы</a>
+                </div>
+                <div class="footer-item">
+                    <a class="footer-title text-20" href="#">Каталог</a>
+                    <a class="text-p footer-menu-item" href="#">Строительная техника</a>
+                    <a class="text-p footer-menu-item" href="#">Техника для мероприятий</a>
+                    <a class="text-p footer-menu-item" href="#">Камеры</a>
+                    <a class="text-p footer-menu-item" href="#">Для дома</a>
+                    <a class="text-p footer-menu-item" href="#">Видеоконференц-оборудование</a>
+                </div>
+                <div class="pay">
+                    <a class="footer-title text-20" style="padding: 0px;">Все сделки защищены</a>
+                    <div class="pay-logo">
+                        <img src="../images/mir.png">
+                        <img src="../images/mastercard.png">
+                        <img src="../images/visa.png">
+                        <img src="../images/unionpay.png">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>
+                    <div class="footer-name">
+                        <a class="footer-title text-20" style="padding: 0px;">Подпишись</a>
+                        <a class="text-p">Будь в курсе всех новинок и предложений!</a>
+                    </div>
+                    <div class="email">
+                        <div class="email-actions">
+                            <input type="email" class="email-input text-p" placeholder="Введите ваш E-mail">
+                            <button class="email-button"><img src="../images/arrow-email.svg"></button>
+                        </div>
+                        <div class="confirmed">
+                            <input type="checkbox">
+                            <a class="text-14">согласен с условиями соглашения</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-socials">
+                    <div class="socials">
+                        <a href="#"><img src="../images/vk.svg"></a>
+                        <a href="#"><img src="../images/tg.svg"></a>
+                        <a href="#"><img src="../images/whatsapp.svg"></a>
+                    </div>
+                    <p class="footer-description">2022-2024 с rt.solutions.ru — онлайн сервис аренды техники. Все права
+                        защищены. ООО «RT Solutions», Юридический адрес: 460000, Оренбург, ул. Чкалова, д.1/1, стр.1,
+                        этаж
+                        2, комната 23</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+    <script type="module">
+        import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+        const swiper = new Swiper(".swiper", {
+            navigation: {
+                nextEl: ".controls__button_next",
+                prevEl: ".controls__button_prev",
+            },
+        });
+
+        const simillarSlider = new Swiper(".simillar__slider", {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: ".simillar__button--next",
+                prevEl: ".simillar__button--prev",
+            },
+        });
+    </script>
+</body>
+
+</html>

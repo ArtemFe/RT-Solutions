@@ -247,7 +247,6 @@
 .event,
 .camera,
 .projector,
-.cleaner,
 .conference {
 	cursor: pointer;
 	display: flex;
@@ -272,10 +271,9 @@
 
 .camera,
 .projector,
-.cleaner,
 .conference {
 	position: relative;
-	width: 336px;
+	width: 460px;
 	height: 400px;
 }
 
@@ -502,4 +500,8 @@ input[type=checkbox]:checked {
 	--swiper-pagination-bullet-border-radius: 0;
 	--swiper-pagination-bullet-width: 10px;
 	--swiper-pagination-bullet-height: 10px;
+}
+
+.rent-cats{
+	color: #000;
 }

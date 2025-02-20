@@ -1,13 +1,9 @@
 .desc {
     margin-top: 20px;
     padding: 20px 0;
-
     display: flex;
     flex-direction: column;
     gap: 32px;
-
-    border-top: 1px solid #C1C1C1;
-    border-bottom: 1px solid #C1C1C1;
 }
 
 .desc__buttons {
@@ -30,7 +26,7 @@
 }
 
 .desc__button--active {
-    background: #3C59F1;
+    background: var(--brand-color);
     color: #fff;
 }
 
