@@ -1,31 +1,32 @@
-const jwt = require('jsonwebtoken');
-const { secret } = require('../config');
+const jwt = require('jsonwebtoken')
+const {secret} = require('../config')
+
 
 module.exports = function (roles) {
     return function (req, res, next) {
         if (req.method === "OPTIONS") {
-            next();
+            next()
         }
 
         try {
-            const token = req.headers.authorization.split(' ')[1]; // Получаем токен из заголовка
+            const token = req.headers.authorization.split(' ')[1]
             if (!token) {
-                return res.status(401).json({ message: "Пользователь не авторизован" });
+                return res.status(403).json({message: "Пользователь не авторизован"})
             }
-
-            // Проверяем токен
-            const decoded = jwt.verify(token, secret);
-            req.user = decoded; // Добавляем декодированные данные в запрос
-
-            // Проверяем, есть ли у пользователя нужная роль
-            if (!roles.includes(decoded.roles)) {
-                return res.status(403).json({ message: "Нет доступа" });
+            const {roles: userRoles} = jwt.verify(token, secret)
+            let hasRole = false
+            userRoles.forEach(role => {
+                if (roles.includes(role)) {
+                    hasRole = true
+                }
+            })
+            if (!hasRole) {
+                return res.status(403).json({message: "У вас нет доступа"})
             }
-
-            next(); // Передаем управление следующему middleware
+            next();
         } catch (e) {
-            console.error(e);
-            return res.status(401).json({ message: "Пользователь не авторизован" });
+            console.log(e)
+            return res.status(403).json({message: "Пользователь не авторизован"})
         }
-    };
+    }
 };
