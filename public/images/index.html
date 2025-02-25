@@ -17,7 +17,7 @@
 
 <body>
     <header>
-        <div class="header-top">
+        <div id="header-top">
             <div class="contain header-wrapper">
                 <div class="left-wrapper">
                     <a class="logo" href="index.html">RentTech</a>
@@ -437,25 +437,6 @@
             </div>
             </div>
         </footer>
-        <script src="home-slider.js"></script>
-        <script type="module">
-            import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
-
-            const bullets = document.querySelectorAll('.swiper-pagination-bullet');
-            bullets[0].classList.add('swiper-pagination-bullet-active');
-
-            const swiper = new Swiper(".swiper", {
-                pagination: {
-                    bulletClass: '.swiper-pagination-bullet',
-                    bulletClassActive: '.swiper-pagination-bullet-active'
-                },
-            });
-
-            swiper.on('slideChange', slider => {
-                bullets.forEach(bullet => bullet.classList.remove('swiper-pagination-bullet-active'));
-                bullets[slider.activeIndex].classList.add('swiper-pagination-bullet-active');
-            })
-        </script>
 </body>
 
 </html>

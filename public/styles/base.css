@@ -60,12 +60,12 @@
 	font-size: 14px;
 }
 
-.header-top {
+#header-top {
 	height: 48px;
 	background-color: var(--brand-color);
 }
 
-.header-top,
+#header-top,
 .left-wrapper {
 	display: flex;
 	justify-content: space-between;

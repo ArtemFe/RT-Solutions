@@ -28,7 +28,7 @@ h2{
     gap:8px
 }
 
-#btn,#closeForm {
+.btn,#closeForm {
     display: block;
     padding: 8px 10px;
     width: 100%;
@@ -44,7 +44,7 @@ h2{
     background-color: var(--gray);
 }
 
-#btn:hover {
+.btn:hover {
     background-color: var(--blue-color);
 }
 
