@@ -97,9 +97,12 @@ function showAddProductModal() {
                 <h2>Добавить товар</h2>
                 <form id="addProductForm">
                     <label>Название:<br><input type="text" id="productName" placeholder="Введите название" required></label><br>
+                    <label>Мини-описание:<br><input type="text" id="productMiniDesc" placeholder="Введите краткое описание" required></label><br>
                     <label>Описание:<br><textarea id="productDesc" placeholder="Введите описание товара" required></textarea></label><br>
                     <label>Цена:<br><input type="number" id="productPrice" placeholder="Введите стоимость" required min="0"></label><br>
                     <label>Категория:<br><select id="productCategory"></select></label><br>
+                    <label>Изображение:<br><input type="file" id="productImage" accept="image/*"></label><br>
+                    <label>Для аренды: <input type="checkbox" id="isRental"></label><br>
                     <button type="submit">Добавить</button>
                     <button type="button" onclick="document.getElementById('addProductModal').remove()">Закрыть</button>
                 </form>
@@ -114,19 +117,48 @@ function showAddProductModal() {
     document.getElementById('addProductForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = document.getElementById('productName').value;
+        const minidesc = document.getElementById('productMiniDesc').value;
         const desc = document.getElementById('productDesc').value;
         const price = parseFloat(document.getElementById('productPrice').value);
         const category = document.getElementById('productCategory').value;
         const isRental = document.getElementById('isRental').checked;
-
+    
+        const imageInput = document.getElementById('productImage');
+        if (!imageInput) {
+            console.error('Элемент productImage не найден');
+            alert('Ошибка: Поле для загрузки изображения не найдено');
+            return;
+        }
+        const image = imageInput.files[0];
+    
+        console.log('name:', name);
+        console.log('minidesc:', minidesc);
+        console.log('desc:', desc);
+        console.log('price:', price);
+        console.log('category:', category);
+        console.log('imageInput:', imageInput);
+        console.log('imageInput.files:', imageInput.files);
+        console.log('image:', image);
+        console.log('isRental:', isRental);
+    
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('minidesc', minidesc);
+        formData.append('desc', desc);
+        formData.append('price', price);
+        formData.append('category', category);
+        formData.append('is_rental', isRental);
+        if (image) {
+            formData.append('image', image);
+        }
+    
         try {
             const response = await fetch(`${apiUrl}/products`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                body: JSON.stringify({ name, desc, price, category, is_rental: isRental })
+                body: formData
             });
             const result = await response.json();
             if (response.ok) {

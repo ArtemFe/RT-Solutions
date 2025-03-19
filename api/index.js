@@ -2,8 +2,7 @@ const express = require("express");
 const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const authRouter = require("./authRouter"); // Подключение authRouter
+const authRouter = require("./authRouter");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 
@@ -12,11 +11,6 @@ const store = new MongoStore({
     uri: `mongodb+srv://user:Qwerty123!@cluster0.la9eq.mongodb.net/database?retryWrites=true&w=majority&appName=Cluster0`,
     collection: 'sessions',
 });
-
-// Подключаем middleware
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Настройка сессии
 app.use(
@@ -32,7 +26,6 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, "../client")));
-
 
 app.use('/', authRouter);
 

@@ -224,15 +224,6 @@
 	justify-content: center;
 }
 
-.rent-title::after {
-	content: url(images/arrow-right.svg);
-	position: relative;
-	left: 60%;
-	bottom: 48px;
-	width: 30px;
-	height: 44px;
-}
-
 .rent-categories {
 	display: flex;
 	width: 940px;
@@ -309,52 +300,13 @@
 	max-width: 257px;
 }
 
-.construction-title::after {
-	content: url(images/construction.png);
-	position: relative;
-	left: 70%;
-	bottom: 22px;
-}
-
-.event-title::after {
-	content: url(images/event.png);
-	position: relative;
-	left: 72%;
-	bottom: 0px;
-}
-
 .rent-bottom {
 	display: flex;
 	justify-content: space-between;
 }
 
-.camera::after {
-	content: url(images/camera.png);
-	position: relative;
-	right: 74%;
-}
-
-.projector::after {
-	content: url(images/project.png);
-	position: relative;
-	right: 61%;
-	top: 55%;
-}
-
-.cleaner::after {
-	content: url(images/cleaner.png);
-	position: relative;
-	right: 35%;
-}
-
-.conference::after {
-	content: url(images/conference.png);
-	position: relative;
-	right: 92%;
-	top: 45%;
-}
-
 footer {
+	margin-top: 80px;
 	background-color: var(--dark-blue);
 }
 
@@ -506,7 +458,7 @@ input[type=checkbox]:checked {
 	color: #000;
 }
 
-#addProductBtn{
+#addProductBtn, #logoutBtn{
 	padding: 8px 12px;
 	border: 1px solid var(--brand-color);
 	border-radius: 20px;
@@ -515,6 +467,6 @@ input[type=checkbox]:checked {
 	transition: all 0.3s;
 }
 
-#addProductBtn:hover{
+#addProductBtn:hover, #logoutBtn:hover{
 	border: 1px solid var(--white);
 }
