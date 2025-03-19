@@ -30,6 +30,10 @@ router.get('/product', (req, res) => {
     res.sendFile(path.join(__dirname, staticUrl, 'html', 'product.html'));
 });
 
+router.get('/lk', (req, res) => {
+    res.sendFile(path.join(__dirname, staticUrl, 'html', 'lk.html'));
+});
+
 router.post('/api/reg', [
     check('username', "Имя пользователя не может быть пустым").notEmpty(),
     check('password', "Пароль должен быть больше 8 символов").isLength({min:8})

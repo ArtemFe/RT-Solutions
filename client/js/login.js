@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const apiUrl = 'http://localhost:5000/api';
 
@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-    
+
         try {
             const response = await fetch(`${apiUrl}/login`, {
                 method: 'POST',
@@ -16,19 +16,24 @@ window.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({ username, password }),
             });
-    
+
             const result = await response.json();
             if (result.message) {
                 console.log('Сообщение от сервера:', result.message);
             }
             if (result.token) {
                 console.log('Токен:', result.token);
+                localStorage.setItem('token', result.token);
+                alert('Авторизация прошла успешно!');
+
+                window.location.href = "/";
             } else {
                 console.log('Токен не найден в ответе сервера');
+                alert('Ошибка авторизации: токен не получен');
             }
         } catch (error) {
             console.error('Ошибка:', error);
             alert('Произошла ошибка при авторизации');
         }
-    });    
-})
+    });
+});
