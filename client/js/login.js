@@ -23,7 +23,6 @@ window.addEventListener('DOMContentLoaded', () => {
             }
             if (result.token) {
                 console.log('Токен:', result.token);
-                localStorage.setItem('token', result.token);
             } else {
                 console.log('Токен не найден в ответе сервера');
             }
