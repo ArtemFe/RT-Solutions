@@ -505,3 +505,16 @@ input[type=checkbox]:checked {
 .rent-cats{
 	color: #000;
 }
+
+#addProductBtn{
+	padding: 8px 12px;
+	border: 1px solid var(--brand-color);
+	border-radius: 20px;
+	color: var(--white);
+	font-size: 14px;
+	transition: all 0.3s;
+}
+
+#addProductBtn:hover{
+	border: 1px solid var(--white);
+}
