@@ -1,41 +1,44 @@
 const express = require("express");
-const session = require("express-session");
-const Rental = require("./models/Rental");
+const session = require('express-session');
+const MongoStore = require('connect-mongodb-session')(session);
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const authRouter = require("./authRouter");
+const authRouter = require("./authRouter"); // Подключение authRouter
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+const store = new MongoStore({
+    uri: `mongodb+srv://user:Qwerty123!@cluster0.la9eq.mongodb.net/database?retryWrites=true&w=majority&appName=Cluster0`,
+    collection: 'sessions',
+});
 
-app.use(express.static(path.join(__dirname, "../client")));
-
+// Подключаем middleware
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.json());
-app.use("/", authRouter);
+// Настройка сессии
+app.use(
+    session({
+        secret: 'your-secret-key',
+        resave: false,
+        saveUninitialized: false,
+        store: store,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24,
+        },
+    })
+);
 
-app.post("/rentals", async (req, res) => {
-    try {
-        const { user_id, product_id, start_at, until_at } = req.body;
+app.use(express.static(path.join(__dirname, "../client")));
 
-        const newRental = new Rental({
-            user_id,
-            product_id,
-            start_at: new Date(start_at),
-            until_at: new Date(until_at),
-        });
 
-        const savedRental = await newRental.save();
-        res.status(201).json(savedRental);
-    } catch (err) {
-        res.status(500).json({
-            message: "Error creating rental",
-            error: err.message,
-        });
-    }
+app.use('/', authRouter);
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Что-то пошло не так!' });
 });
 
 const start = async () => {

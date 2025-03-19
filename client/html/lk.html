@@ -30,6 +30,10 @@
                 <div class="right-wrapper">
                     <button><a href="/reg" class="right-btn" id="registerBtn">Регистрация</a></button>
                     <button><a href="/login" class="right-btn" id="loginBtn">Вход</a></button>
+                    <button><a href="/cart" class="right-btn" id="Cart" style="display: none;">Корзина</a></button>
+                    <button><a href="/fav" class="right-btn" id="Fav" style="display: none;">Избранное</a></button>
+                    <button><a href="/lk" class="right-btn" id="Lk" style="display: none;">Аккаунт</a></button>
+                    <button><a href="/logout" class="right-btn" id="logoutBtn" style="display: none;">Выйти</a></button>
                 </div>
             </div>
         </div>
@@ -123,25 +127,7 @@
         </div>
         </div>
     </footer>
-    <script type="module">
-        import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
-
-        const swiper = new Swiper(".swiper", {
-            navigation: {
-                nextEl: ".controls__button_next",
-                prevEl: ".controls__button_prev",
-            },
-        });
-
-        const simillarSlider = new Swiper(".simillar__slider", {
-            slidesPerView: 4,
-            spaceBetween: 20,
-            navigation: {
-                nextEl: ".simillar__button--next",
-                prevEl: ".simillar__button--prev",
-            },
-        });
-    </script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

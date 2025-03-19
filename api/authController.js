@@ -52,6 +52,15 @@ class authController {
             if (!validPassword) {
                 return res.status(400).json({ message: `Введен неверный пароль` });
             }
+
+            req.session.user = {
+                id: user._id,
+                username: user.username,
+                roles: user.roles,
+            };
+
+            console.log('Сессия создана:', req.session.user);
+
             const token = generateAccessToken(user._id, user.roles);
             return res.json({ message: "Авторизация успешна", token, redirectUrl: "/" });
         } catch (e) {

@@ -1,21 +1,33 @@
-const jwt = require('jsonwebtoken')
-const {secret} = require('../config')
+const jwt = require('jsonwebtoken');
+const { secret } = require('../config');
 
 module.exports = function (req, res, next) {
     if (req.method === "OPTIONS") {
-        next()
+        return next();
     }
 
     try {
-        const token = req.headers.authorization.split(' ')[1]
-        if (!token) {
-            return res.status(403).json({message: "Пользователь не авторизован"})
+        // Проверяем JWT-токен (если он есть)
+        const authHeader = req.headers.authorization;
+        if (authHeader) {
+            const token = authHeader.split(' ')[1]; // Извлекаем токен
+            if (token) {
+                const decodedData = jwt.verify(token, secret); // Проверяем токен
+                req.user = decodedData; // Добавляем данные пользователя в запрос
+                return next(); // Передаем управление следующему middleware
+            }
         }
-        const decodedData = jwt.verify(token, secret)
-        req.user = decodedData
-        next()
+
+        // Если JWT-токена нет, проверяем сессию
+        if (req.session.user) {
+            req.user = req.session.user; // Добавляем данные пользователя из сессии
+            return next(); // Передаем управление следующему middleware
+        }
+
+        // Если ни JWT, ни сессия не найдены
+        return res.status(403).json({ message: "Пользователь не авторизован" });
     } catch (e) {
-        console.log(e)
-        return res.status(403).json({message: "Пользователь не авторизован"})
+        console.log(e);
+        return res.status(403).json({ message: "Пользователь не авторизован" });
     }
 };
