@@ -17,6 +17,13 @@ function updateHeaderForLoggedInUser() {
         fav.style.display = 'block';
         lk.style.display = 'block';
         logoutBtn.style.display = 'block';
+
+        logoutBtn.onclick = (e) => {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            updateHeaderForGuest();
+            window.location.href = '/';
+        };
     } else {
         console.error('Некоторые элементы не найдены');
     }
@@ -82,12 +89,5 @@ window.addEventListener('DOMContentLoaded', () => {
             console.error('Ошибка:', error);
             alert('Произошла ошибка при авторизации');
         }
-    });
-
-    document.querySelector('#logoutBtn').addEventListener('click', (e) => {
-        e.preventDefault(); 
-        localStorage.removeItem('token'); 
-        updateHeaderForGuest(); 
-        window.location.href = '/'; 
     });
 });
