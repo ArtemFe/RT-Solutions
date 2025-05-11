@@ -13,6 +13,12 @@ const path = require("path");
 const PORT = process.env.PORT || 5000;
 const cartRouter = require('./cartRouter');
 
+// Проверка наличия необходимых переменных окружения
+if (!process.env.DB_URL) {
+    console.error('DB_URL is not defined in environment variables');
+    process.exit(1);
+}
+
 const app = express();
 
 // Middleware
@@ -31,6 +37,9 @@ app.use(express.json());
 // MongoDB connection
 const start = async () => {
     try {
+        console.log('Attempting to connect to MongoDB...');
+        console.log('DB_URL:', process.env.DB_URL); // для отладки
+        
         await mongoose.connect(process.env.DB_URL);
         console.log('Connected to MongoDB');
 
