@@ -28,13 +28,16 @@
                     </div>
                 </div>
                 <div class="right-wrapper">
-                    <button><a href="/reg" class="right-btn" id="registerBtn">Регистрация</a></button>
-                    <button><a href="/login" class="right-btn" id="loginBtn">Вход</a></button>
-                    <button><a href="/cart" class="right-btn" id="Cart" style="display: none;">Корзина</a></button>
-                    <button><a href="/fav" class="right-btn" id="Fav" style="display: none;">Избранное</a></button>
-                    <button><a href="/lk" class="right-btn" id="Lk" style="display: none;">Аккаунт</a></button>
-                    <button id="addProductBtn" style="display: none;">Добавить товар</button>
-                    <button><a href="/" class="right-btn" id="logoutBtn" style="display: none;">Выйти</a></button>
+                    <a href="/reg" class="right-btn" id="registerBtn">Регистрация</a>
+                    <a href="/login" class="right-btn" id="loginBtn">Вход</a>
+                    <a href="/cart" class="right-btn" id="Cart" style="display:none;">
+                        Корзина
+                        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+                    </a>
+                    <a href="/fav" class="right-btn" id="Fav" style="display:none;">Избранное</a>
+                    <a href="/lk" class="right-btn" id="Lk" style="display:none;">Аккаунт</a>
+                    <a href="#" class="right-btn" id="addProductBtn" style="display:none;">Добавить товар</a>
+                    <a href="/" class="right-btn" id="logoutBtn" style="display:none;">Выйти</a>
                 </div>
             </div>
         </div>
@@ -43,34 +46,58 @@
     <div class="contain">
         <main class="main-content">
             <section class="profile-section">
-                <h1>Профиль</h1>
-                <div class="profile-info">
-                    <p><strong>Username:</strong> Иван Иванов</p>
-                    <p><strong>Email:</strong> ivan@example.com</p>
+                <div class="profile-container">
+                    <div class="profile-avatar" id="profileAvatar">?</div>
+                    <form class="profile-form" id="profileForm">
+                        <div class="profile-row">
+                            <div>
+                                <label>Имя<br><input type="text" id="firstName"></label>
+                            </div>
+                            <div>
+                                <label>Логин<br><input type="text" id="username" disabled></label>
+                            </div>
+                        </div>
+                        <div class="profile-row">
+                            <div>
+                                <label>Фамилия<br><input type="text" id="lastName"></label>
+                            </div>
+                            <div>
+                                <label>Почта<br><input type="email" id="email" disabled></label>
+                            </div>
+                        </div>
+                        <div class="profile-row">
+                            <div>
+                                <label>Отчество<br><input type="text" id="middleName"></label>
+                            </div>
+                            <div>
+                                <label>Адрес<br><input type="text" id="address"></label>
+                            </div>
+                        </div>
+                        <div class="profile-row">
+                            <div>
+                                <label>Пароль<br>
+                                    <button type="button" disabled>поменять</button>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button type="submit">сохранить изменения</button>
+                            <button type="button" onclick="window.location.reload()">отмена</button>
+                        </div>
+                    </form>
                 </div>
-            </section>
-        
-            <section class="orders-section">
-                <h2>Последние заказы</h2>
-                <ul class="orders-list">
-                    <li>Заказ #12345 - 10.10.2023</li>
-                    <li>Заказ #12346 - 12.10.2023</li>
-                    <li>Заказ #12347 - 15.10.2023</li>
-                </ul>
             </section>
         </main>
     </div>
     
-    <footer>
+    <!-- <footer>
         <div class="footer-wrapper contain">
             <div class="footer-list">
                 <div class="footer-item">
                     <a class="logo" href="#">RT Solutions</a>
                     <a class="text-p footer-menu-item" href="#">Главная</a>
                     <a class="text-p footer-menu-item" href="#">Каталог</a>
-                    <a class="text-p footer-menu-item" href="#">О нас</a>
                     <a class="text-p footer-menu-item" href="#">Личный кабинет</a>
-                    <a class="text-p footer-menu-item" href="#">Помощь</a>
                 </div>
                 <div class="footer-item">
                     <a class="footer-title text-20" href="#">Компания</a>
@@ -83,10 +110,7 @@
                 <div class="footer-item">
                     <a class="footer-title text-20" href="#">Каталог</a>
                     <a class="text-p footer-menu-item" href="#">Строительная техника</a>
-                    <a class="text-p footer-menu-item" href="#">Техника для мероприятий</a>
-                    <a class="text-p footer-menu-item" href="#">Камеры</a>
-                    <a class="text-p footer-menu-item" href="#">Для дома</a>
-                    <a class="text-p footer-menu-item" href="#">Видеоконференц-оборудование</a>
+                    <a class="text-p footer-menu-item" href="#">Строительное оборудование</a>
                 </div>
                 <div class="pay">
                     <a class="footer-title text-20" style="padding: 0px;">Все сделки защищены</a>
@@ -121,16 +145,13 @@
                         <a href="#"><img src="../images/tg.svg"></a>
                         <a href="#"><img src="../images/whatsapp.svg"></a>
                     </div>
-                    <p class="footer-description">2022-2024 с rt.solutions.ru — онлайн сервис аренды техники. Все права
-                        защищены. ООО «RT Solutions», Юридический адрес: 460000, Оренбург, ул. Чкалова, д.1/1, стр.1,
-                        этаж
-                        2, комната 23</p>
+                    <p class="footer-description">2022-2025 с rt.solutions.ru — онлайн сервис аренды техники. Все права защищены. ООО «RT Solutions», Юридический адрес: 460000, Оренбург, ул. Чкалова, д.1/1, стр.1, этаж 2, комната 23</p>
                 </div>
             </div>
         </div>
-        </div>
-    </footer>
+    </footer> -->
     <script src="../js/login.js"></script>
+    <script src="../js/lk.js"></script>
 </body>
 
 </html>

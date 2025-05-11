@@ -5,10 +5,9 @@
 }
 
 body {
-	width: 100%;
-	height: 100%;
-	line-height: 1;
-	overflow-x: hidden;
+	min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 *,
@@ -53,14 +52,6 @@ button, input[type="submit"] {
     display: inline-block;
     box-shadow: none;
     cursor: pointer;
-}
-
-input:focus, select:focus, input.form-control:focus {
-    outline:none !important;
-    outline-width: 0 !important;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
 }
 
 button::-moz-focus-inner {

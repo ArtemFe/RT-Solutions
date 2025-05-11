@@ -53,16 +53,32 @@ class authController {
                 return res.status(400).json({ message: `Введен неверный пароль` });
             }
 
+            // Сохраняем пользователя в сессии
             req.session.user = {
                 id: user._id,
                 username: user.username,
                 roles: user.roles,
             };
 
-            console.log('Сессия создана:', req.session.user);
+            // Сохраняем сессию
+            req.session.save((err) => {
+                if (err) {
+                    console.error('Ошибка сохранения сессии:', err);
+                    return res.status(500).json({ message: 'Ошибка сервера' });
+                }
 
-            const token = generateAccessToken(user._id, user.roles);
-            return res.json({ message: "Авторизация успешна", token, redirectUrl: "/" });
+                const token = generateAccessToken(user._id, user.roles);
+                return res.json({ 
+                    message: "Авторизация успешна", 
+                    token, 
+                    redirectUrl: "/",
+                    user: {
+                        id: user._id,
+                        username: user.username,
+                        roles: user.roles
+                    }
+                });
+            });
         } catch (e) {
             console.log(e);
             res.status(400).json({ message: 'Login error', error: e.message });

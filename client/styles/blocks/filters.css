@@ -5,6 +5,7 @@
 }
 
 .filters__title {
+    width: 300px;
     font-size: 27px;
     font-weight: 700;
 }

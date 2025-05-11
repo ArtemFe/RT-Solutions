@@ -36,30 +36,13 @@
                 </div>
             </div>
         </div>
-        <div class="header-bottom">
-            <div class="contain">
-                <div class="search-wrapper">
-                    <input type="text" id="elastic" class="search text-p" placeholder="Введите название оборудования, который вы ищете">
-                    <button class="button-search text-p">Поиск</button>
-                    <div id="search-suggestions" class="search-suggestions"></div>
-                </div>
-            </div>
-        </div>
     </header>
 
-    <div class="contain catalog">
-        <div class="catalog__wrapper">
-            <div class="filters">
-                <span class="filters__title">Найдено по фильтрам: <span id="productCount">0</span></span>
-                <ul class="filters__list">
-                    <li class="filters__item">
-                        <span class="filters__itemName">Категории</span>
-                        <div id="categoryFilters"></div>
-                    </li>
-                </ul>
-            </div>
-            <ul class="catalog__list" id="productList"></ul>
-        </div>
+    <div class="contain cart-container">
+        <h1>Корзина</h1>
+        <ul class="cart-list" id="cartList"></ul>
+        <div class="cart-total" id="cartTotal"></div>
+        <button class="cart-checkout-btn" id="checkoutBtn">Оформить заказ</button>
     </div>
 
     <footer>
@@ -123,7 +106,6 @@
         </div>
     </footer>
     <script src="../js/login.js"></script>
-    <script src="../js/catalog.js"></script>
-    <script src="../js/find.js"></script>
+    <script src="../js/cart.js"></script>
 </body>
 </html>

@@ -28,12 +28,16 @@
                     </div>
                 </div>
                 <div class="right-wrapper">
-                    <button><a href="/reg" class="right-btn" id="registerBtn">Регистрация</a></button>
-                    <button><a href="/login" class="right-btn" id="loginBtn">Вход</a></button>
-                    <button><a href="/cart" class="right-btn" id="Cart" style="display: none;">Корзина</a></button>
-                    <button><a href="/fav" class="right-btn" id="Fav" style="display: none;">Избранное</a></button>
-                    <button><a href="/lk" class="right-btn" id="Lk" style="display: none;">Аккаунт</a></button>
-                    <button><a href="/" class="right-btn" id="logoutBtn" style="display: none;">Выйти</a></button>
+                    <a href="/reg" class="right-btn" id="registerBtn">Регистрация</a>
+                    <a href="/login" class="right-btn" id="loginBtn">Вход</a>
+                    <a href="/cart" class="right-btn" id="Cart" style="display:none;">
+                        Корзина
+                        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+                    </a>
+                    <a href="/fav" class="right-btn" id="Fav" style="display:none;">Избранное</a>
+                    <a href="/lk" class="right-btn" id="Lk" style="display:none;">Аккаунт</a>
+                    <a href="#" class="right-btn" id="addProductBtn" style="display:none;">Добавить товар</a>
+                    <a href="/" class="right-btn" id="logoutBtn" style="display:none;">Выйти</a>
                 </div>
             </div>
         </div>
@@ -42,127 +46,17 @@
                 <div class="search-wrapper">
                     <input type="text" id="elastic" class="search text-p" placeholder="Введите название оборудования, который вы ищете">
                     <button class="button-search text-p">Поиск</button>
+                    <div id="search-suggestions" class="search-suggestions"></div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="contain">
-        <div class="product">
-            <div class="product__sliderBlock">
-                <div class="swiper product__slider">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide product__slide">
-                            <img src="../images/drel1.webp" alt="slide 1">
-                        </div>
-                        <div class="swiper-slide product__slide">
-                            <img src="../images/drel2.webp" alt="slide 2">
-                        </div>
-                        <div class="swiper-slide product__slide">
-                            <img src="../images/drel3.webp" alt="slide 3">
-                        </div>
-                    </div>
-                    <button class="controls__button_prev product__prevSlide">
-                        <img src="../images/Vector 22.svg" alt="prev">
-                    </button>
-                    <button class="controls__button_next product__nextSlide">
-                        <img src="../images/Vector 21.svg" alt="next">
-                    </button>
-                </div>
-                <ul class="product__images">
-                    <li class="product__image">
-                        <img src="../images/drel1.webp" class="mini-img">
-                    </li>
-                    <li class="product__image">
-                        <img src="../images/drel2.webp" class="mini-img">
-                    </li>
-                    <li class="product__image">
-                        <img src="../images/drel3.webp" class="mini-img">
-                    </li>
-                </ul>
-            </div>
-            <div class="product__descBlock">
-                <h1 class="product__title">Дрель</h1>
-                
-                <div class="product__priceBlock">
-                    <span class="product__subtitle">Цена за одни сутки</span>
-                    <div class="product__price"><span>860</span> руб</div>
-                    <div class="product__countBlock">
-                        <span>Количество</span>
-                        <button>-</button>
-                        <span class="product__count">1</span>
-                        <button>+</button>
-                    </div>
-                </div>
-
-                <div class="product__dateSelect">
-                    <span>Выберите даты 
-                    </span>
-                    <div class="product__date">
-                        <h3>с</h3>
-                        <input type="date" name="date">
-                        <h3>до</h3>
-                        <input type="date" name="date">
-                    </div>
-                </div>
-
-                <div class="product__actions">
-                    <button class="product__button">Добавить в корзину</button>
-                    <button class="product__button product__button--favorites"><img src="../images/heart2.png"
-                            alt="Добавить в избранное"></button>
-                </div>
-                <div class="product__infoBlock">
-                    <div class="product__infoItem">
-                        <span class="product__infoItemName">Доставка и самовывоз:</span>
-                        <ul class="product__infoItemValues">
-                            <li class="product__infoItemValue">
-                                <span>Забрать сегодня</span>
-                                <img src="../images/dots.png" alt="dots">
-                                <span>бесплатно</span>
-                            </li>
-                            <li class="product__infoItemValue">
-                                <span>Доставим завтра</span>
-                                <img src="../images/dots.png" alt="dots">
-                                <span>бесплатно</span>
-                            </li>
-                            <li class="product__infoItemValue">
-                                <span>Доставим сегодня</span>
-                                <img src="../images/dots.png" alt="dots">
-                                <span>от 399 руб</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="product__infoItem">
-                        <span class="product__infoItemName">Как вернуть:</span>
-                        <ul class="product__infoItemValues">
-                            <li class="product__infoItemValue">
-                                <span>Вернуть самому</span>
-                                <img src="../images/dots.png" alt="dots">
-                                <span>бесплатно</span>
-                            </li>
-                            <li class="product__infoItemValue">
-                                <span>Заберет курьер</span>
-                                <img src="../images/dots.png" alt="dots">
-                                <span>бесплатно</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="contain">
+        <div>
+            <div class="product-page__container" id="product-container"></div>
         </div>
-    </section>
-
-    <section class="contain desc">
-        <div class="desc__buttons">
-            <button class="desc__button desc__button--active">Описание товара</button>
-            <button class="desc__button">Характеристики</button>
-            <button class="desc__button">Комплектация</button>
-        </div>
-        <p class="desc__text">Для строительства, ремонта и монтажа вам пригодится аренда мощной электрической дрели. Она подходит для сверления отверстий в дереве, металле, пластике и бетоне. Дрель оснащена регулировкой скорости, реверсом и быстрозажимным патроном, что делает её универсальным инструментом для любых задач.</p>
-        <p class="desc__text">Без перегрева дрель работает несколько часов, а эргономичная рукоятка обеспечивает комфорт даже при длительном использовании. В комплекте идут сменные сверла для разных материалов.</p>
-        <p class="desc__text">Аренда дрели в нашем сервисе стоит от 860 руб в сутки. Доставка по городу, в том числе за пределы центра, рассчитывается отдельно.</p>
-    </section>
+    </div>
     
     <footer>
         <div class="footer-wrapper contain">
@@ -171,9 +65,7 @@
                     <a class="logo" href="#">RT Solutions</a>
                     <a class="text-p footer-menu-item" href="#">Главная</a>
                     <a class="text-p footer-menu-item" href="#">Каталог</a>
-                    <a class="text-p footer-menu-item" href="#">О нас</a>
                     <a class="text-p footer-menu-item" href="#">Личный кабинет</a>
-                    <a class="text-p footer-menu-item" href="#">Помощь</a>
                 </div>
                 <div class="footer-item">
                     <a class="footer-title text-20" href="#">Компания</a>
@@ -186,10 +78,7 @@
                 <div class="footer-item">
                     <a class="footer-title text-20" href="#">Каталог</a>
                     <a class="text-p footer-menu-item" href="#">Строительная техника</a>
-                    <a class="text-p footer-menu-item" href="#">Техника для мероприятий</a>
-                    <a class="text-p footer-menu-item" href="#">Камеры</a>
-                    <a class="text-p footer-menu-item" href="#">Для дома</a>
-                    <a class="text-p footer-menu-item" href="#">Видеоконференц-оборудование</a>
+                    <a class="text-p footer-menu-item" href="#">Строительное оборудование</a>
                 </div>
                 <div class="pay">
                     <a class="footer-title text-20" style="padding: 0px;">Все сделки защищены</a>
@@ -224,13 +113,9 @@
                         <a href="#"><img src="../images/tg.svg"></a>
                         <a href="#"><img src="../images/whatsapp.svg"></a>
                     </div>
-                    <p class="footer-description">2022-2024 с rt.solutions.ru — онлайн сервис аренды техники. Все права
-                        защищены. ООО «RT Solutions», Юридический адрес: 460000, Оренбург, ул. Чкалова, д.1/1, стр.1,
-                        этаж
-                        2, комната 23</p>
+                    <p class="footer-description">2022-2025 с rt.solutions.ru — онлайн сервис аренды техники. Все права защищены. ООО «RT Solutions», Юридический адрес: 460000, Оренбург, ул. Чкалова, д.1/1, стр.1, этаж 2, комната 23</p>
                 </div>
             </div>
-        </div>
         </div>
     </footer>
     <script src="../js/login.js"></script>
@@ -253,6 +138,9 @@
             },
         });
     </script>
+    <script src="../js/find.js"></script>
+    <script src="../js/find-redirect.js"></script>
+    <script src="../js/product.js"></script>
 </body>
 
 </html>

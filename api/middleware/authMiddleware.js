@@ -2,6 +2,10 @@ const jwt = require('jsonwebtoken');
 const { secret } = require('../config');
 
 module.exports = function (req, res, next) {
+    if (req.session && req.session.user) {
+        req.user = req.session.user;
+        return next();
+    }
     if (req.method === "OPTIONS") {
         next();
     }

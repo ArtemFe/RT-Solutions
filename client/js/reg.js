@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP ошибка! статус: ${response.status}`);
             }
             const data = await response.json();
             console.log(data.message); // "User registered successfully"
@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         } catch (err) {
             console.error('Error:', err);
-            alert('Registration failed. Please try again.'); // Показываем сообщение об ошибке
+            alert('Регистрация не успешна. Попробуйте снова.'); // Показываем сообщение об ошибке
         }
     });
 });
