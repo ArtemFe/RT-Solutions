@@ -21,14 +21,24 @@ app.use(cors({
 
 app.use(express.json());
 
-// Настройка сессий
+// MongoDB connection
+mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+// Session configuration
 app.use(session({
     secret: process.env.JWT_SECRET || 'your-secret-key',
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
         mongoUrl: process.env.DB_URL,
-        ttl: 24 * 60 * 60 // 1 день
+        ttl: 24 * 60 * 60, // 1 день
+        autoRemove: 'native',
+        touchAfter: 24 * 3600 // 1 день
     }),
     cookie: {
         secure: process.env.NODE_ENV === 'production',
