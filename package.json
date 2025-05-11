@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "RT Solutions project",
   "scripts": {
-    "start": "cd api && npm start",
+    "start": "cd api && npm install && npm start",
     "install-all": "npm install && cd api && npm install",
     "dev": "concurrently \"cd api && npm run dev\" \"cd client && npm run dev\""
   },

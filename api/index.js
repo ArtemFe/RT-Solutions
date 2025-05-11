@@ -1,6 +1,6 @@
 const express = require("express");
 const session = require('express-session');
-const MongoStore = require('connect-mongodb-session')(session);
+const MongoStore = require('connect-mongo');
 const mongoose = require("mongoose");
 const authRouter = require("./authRouter");
 const path = require("path");
@@ -15,32 +15,26 @@ const app = express();
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
         ? 'https://your-frontend-url.onrender.com' 
-        : 'http://localhost:5000',
+        : 'http://localhost:3000',
     credentials: true
 }));
 
 app.use(express.json());
 
-const store = new MongoStore({
-    uri: `mongodb+srv://user:Qwerty123!@cluster0.la9eq.mongodb.net/database?retryWrites=true&w=majority&appName=Cluster0`,
-    collection: 'sessions',
-});
-
-// Настройка сессии
-app.use(
-    session({
-        secret: 'your-secret-key',
-        resave: false,
-        saveUninitialized: false,
-        store: store,
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24, // 24 часа
-            secure: false, // для разработки false, для продакшена true
-            httpOnly: true,
-            sameSite: 'lax'
-        },
-    })
-);
+// Настройка сессий
+app.use(session({
+    secret: process.env.JWT_SECRET || 'your-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.DB_URL,
+        ttl: 24 * 60 * 60 // 1 день
+    }),
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 1000 // 1 день
+    }
+}));
 
 // Добавляем middleware для проверки сессии
 app.use((req, res, next) => {
@@ -56,6 +50,18 @@ app.use('/', cartRouter);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: 'Что-то пошло не так!' });
+});
+
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose connected to MongoDB');
+});
+
+mongoose.connection.on('error', (err) => {
+    console.error('Mongoose connection error:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log('Mongoose disconnected');
 });
 
 const start = async () => {
