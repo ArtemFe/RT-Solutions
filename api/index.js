@@ -6,20 +6,20 @@ const authRouter = require("./authRouter");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 const cartRouter = require('./cartRouter');
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
-// Добавляем настройки CORS
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
-});
+// Настройка CORS для работы с Render
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production' 
+        ? 'https://your-frontend-url.onrender.com' 
+        : 'http://localhost:5000',
+    credentials: true
+}));
+
+app.use(express.json());
 
 const store = new MongoStore({
     uri: `mongodb+srv://user:Qwerty123!@cluster0.la9eq.mongodb.net/database?retryWrites=true&w=majority&appName=Cluster0`,
