@@ -16,11 +16,39 @@ const generateAccessToken = (id, roles) => {
 class authController {
     async reg(req, res) {
         try {
+            console.log('Получен запрос на регистрацию:', {
+                body: req.body,
+                headers: req.headers,
+                validationErrors: validationResult(req).array()
+            });
+
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(400).json({ message: "Ошибка при регистрации", errors });
+                const errorMessages = errors.array().map(err => err.msg);
+                console.log('Ошибки валидации:', errorMessages);
+                return res.status(400).json({ 
+                    message: "Ошибка при регистрации", 
+                    errors: errorMessages 
+                });
             }
             const { email, username, password, firstName, lastName, middleName, address } = req.body;
+
+            // Проверяем существование пользователя с таким email или username
+            const existingUser = await User.findOne({
+                $or: [
+                    { email: email },
+                    { username: username }
+                ]
+            });
+
+            if (existingUser) {
+                if (existingUser.email === email) {
+                    return res.status(400).json({ message: "Пользователь с такой почтой уже существует" });
+                }
+                if (existingUser.username === username) {
+                    return res.status(400).json({ message: "Пользователь с таким именем уже существует" });
+                }
+            }
 
             // Проверяем, есть ли уже админ
             const adminRole = await Role.findOne({ value: "Admin" });
@@ -31,10 +59,6 @@ class authController {
                 roles = ["Admin"];
             }
 
-            const candidate = await User.findOne({ email });
-            if (candidate) {
-                return res.status(400).json({ message: "Пользователь с такой почтой уже существует" });
-            }
             const hashPassword = bcrypt.hashSync(password, 7);
             const user = new User({ 
                 email, 
@@ -46,13 +70,24 @@ class authController {
                 middleName,
                 address
             });
-            console.log('Создан новый пользователь:', user); 
-            await user.save();
-            console.log('Пользователь сохранён в базу данных'); 
-            return res.json({ message: "Пользователь успешно зарегистрирован", redirectUrl: "/login" });
+
+            try {
+                await user.save();
+                return res.json({ message: "Пользователь успешно зарегистрирован", redirectUrl: "/login" });
+            } catch (saveError) {
+                if (saveError.code === 11000) {
+                    return res.status(400).json({ 
+                        message: "Пользователь с таким именем или email уже существует" 
+                    });
+                }
+                throw saveError;
+            }
         } catch (e) {
-            console.log(e);
-            res.status(400).json({ message: 'Регистрация не удалась' });
+            console.log('Ошибка при регистрации:', e);
+            res.status(400).json({ 
+                message: 'Регистрация не удалась', 
+                error: e.message 
+            });
         }
     }
 

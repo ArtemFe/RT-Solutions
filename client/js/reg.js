@@ -23,32 +23,38 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
+            const userData = { 
+                username, 
+                email, 
+                password,
+                firstName,
+                lastName,
+                middleName,
+                address
+            };
+            console.log('Отправляем данные на регистрацию:', userData);
+
             const response = await fetch(`/api/reg`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ 
-                    username, 
-                    email, 
-                    password,
-                    firstName,
-                    lastName,
-                    middleName,
-                    address
-                }),
+                body: JSON.stringify(userData),
             });
 
+            console.log('Статус ответа:', response.status);
+            const responseData = await response.json();
+            console.log('Ответ сервера:', responseData);
+
             if (!response.ok) {
-                const error = await response.json();
-                throw new Error(error.message || `HTTP ошибка! статус: ${response.status}`);
+                throw new Error(responseData.message || `HTTP ошибка! статус: ${response.status}`);
             }
-            const data = await response.json();
-            showGlobalMessage(data.message);
-            if (data.redirectUrl) {
-                window.location.href = data.redirectUrl;
+            showGlobalMessage(responseData.message);
+            if (responseData.redirectUrl) {
+                window.location.href = responseData.redirectUrl;
             }
         } catch (err) {
+            console.error('Ошибка при регистрации:', err);
             showGlobalMessage(err.message || 'Регистрация не успешна. Попробуйте снова.', 'error');
         }
     });

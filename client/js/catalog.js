@@ -198,38 +198,47 @@ function addToCart(productId) {
     modal.querySelector('.modal-confirm').addEventListener('click', async () => {
         const dateFrom = modal.querySelector('#date-from').value;
         const dateTo = modal.querySelector('#date-to').value;
+
         if (!dateFrom || !dateTo) {
-            alert('Пожалуйста, выберите обе даты!');
+            showGlobalMessage('Пожалуйста, выберите обе даты', 'error');
             return;
         }
         if (new Date(dateFrom) >= new Date(dateTo)) {
-            alert('Дата окончания должна быть позже даты начала!');
+            showGlobalMessage('Дата окончания должна быть позже даты начала', 'error');
             return;
         }
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert('Войдите для добавления в корзину!');
-            return;
-        }
+
         try {
-            const res = await fetch(`/api/products`, {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                showGlobalMessage('Войдите, чтобы добавить товар в корзину', 'error');
+                return;
+            }
+
+            const res = await fetch(`/api/cart`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ productId, quantity: qty, dateFrom, dateTo })
+                body: JSON.stringify({
+                    productId,
+                    quantity: qty,
+                    dateFrom,
+                    dateTo
+                })
             });
+
             if (res.ok) {
-                alert('Товар добавлен в корзину!');
+                showGlobalMessage('Товар добавлен в корзину!');
                 closeModal();
-                if (typeof updateCartBadge === 'function') updateCartBadge();
             } else {
                 const error = await res.json();
-                alert(error.message || 'Ошибка при добавлении в корзину');
+                showGlobalMessage(error.message || 'Ошибка при добавлении в корзину', 'error');
             }
         } catch (error) {
-            alert('Произошла ошибка при добавлении в корзину');
+            console.error('Error adding to cart:', error);
+            showGlobalMessage('Произошла ошибка при добавлении в корзину', 'error');
         }
     });
 }

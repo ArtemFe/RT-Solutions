@@ -121,11 +121,17 @@ function showDateModal(productId) {
       return;
     }
     try {
-      const res = await fetch(`/api/cart`, {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        showGlobalMessage('Войдите, чтобы добавить товар в корзину', 'error');
+        return;
+      }
+
+      const res = await fetch(`/cart`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           productId,
@@ -134,17 +140,17 @@ function showDateModal(productId) {
           dateTo
         })
       });
+
       if (res.ok) {
-        alert('Товар добавлен в корзину!');
-        updateCartBadge && updateCartBadge();
+        showGlobalMessage('Товар добавлен в корзину!');
         closeModal();
       } else {
         const error = await res.json();
-        alert(error.message || 'Ошибка при добавлении в корзину');
+        showGlobalMessage(error.message || 'Ошибка при добавлении в корзину', 'error');
       }
     } catch (error) {
       console.error('Error adding to cart:', error);
-      alert('Произошла ошибка при добавлении в корзину');
+      showGlobalMessage('Произошла ошибка при добавлении в корзину', 'error');
     }
   };
 

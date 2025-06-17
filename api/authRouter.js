@@ -170,7 +170,10 @@ router.post(
     express.json(),
     [
         check('username', "Имя пользователя не может быть пустым").notEmpty(),
-        check('password', "Пароль должен быть больше 8 символов").isLength({ min: 8 })
+        check('email', "Некорректный email").isEmail(),
+        check('password', "Пароль должен быть больше 8 символов").isLength({ min: 8 }),
+        check('firstName', "Имя не может быть пустым").notEmpty(),
+        check('lastName', "Фамилия не может быть пустой").notEmpty()
     ],
     controller.reg
 );
