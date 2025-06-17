@@ -30,9 +30,7 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? 'https://your-frontend-url.onrender.com' 
-        : 'http://localhost:3000',
+    origin: process.env.FRONTEND_URL || 'https://rt-solutions.onrender.com/',
     credentials: true
 }));
 app.use(express.json());
