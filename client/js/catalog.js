@@ -8,7 +8,7 @@ async function loadCategoriesForFilters() {
         const token = localStorage.getItem('token');
         // Формируем headers только если токен есть
         const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-        const response = await fetch(`api/categories`, {
+        const response = await fetch(`/api/categories`, {
             headers
         });
         if (!response.ok) {
@@ -50,7 +50,7 @@ async function loadProducts() {
         console.log('Загрузка товаров...');
         const token = localStorage.getItem('token');
         const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-        const response = await fetch(`api/products`, { headers });
+        const response = await fetch(`/api/products`, { headers });
         if (!response.ok) {
             throw new Error(`Ошибка HTTP: ${response.status}`);
         }
@@ -212,7 +212,7 @@ function addToCart(productId) {
             return;
         }
         try {
-            const res = await fetch(`/cart`, {
+            const res = await fetch(`/api/products`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ function showEditProductModal(product) {
     document.body.appendChild(modal);
 
     // Заполнить категории
-    fetch(`api/categories`, {
+    fetch(`/api/categories`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     })
     .then(res => res.json())
@@ -340,7 +340,7 @@ function showEditProductModal(product) {
             }
         });
         try {
-            const response = await fetch(`api/products/${product._id}`, {
+            const response = await fetch(`/api/products/${product._id}`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
                 body: formData
@@ -389,7 +389,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const id = e.target.dataset.id;
             if (confirm('Удалить этот товар?')) {
                 try {
-                    const res = await fetch(`api/products/${id}`, {
+                    const res = await fetch(`/api/products/${id}`, {
                         method: 'DELETE',
                         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
                     });
@@ -409,7 +409,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const id = e.target.dataset.id;
             // Получаем данные товара для автозаполнения
             try {
-                const res = await fetch(`api/products`);
+                const res = await fetch(`/api/products`);
                 const products = await res.json();
                 const product = products.find(p => p._id === id);
                 if (product) {

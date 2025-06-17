@@ -2,7 +2,7 @@ import { showGlobalMessage } from './utils.js';
 
 async function loadProfile() {
   try {
-    const res = await fetch(`api/profile`, {
+    const res = await fetch(`/api/profile`, {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     });
     
@@ -41,7 +41,7 @@ document.getElementById('profileForm').addEventListener('submit', async (e) => {
       address: document.getElementById('address').value
     };
 
-    const res = await fetch(`api/profile`, {
+    const res = await fetch(`/api/profile`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -127,7 +127,7 @@ async function loadActiveRentals() {
             return;
         }
 
-        const response = await fetch(`api/orders/active`, {
+        const response = await fetch(`/api/orders/active`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -206,7 +206,7 @@ async function loadAllOrders() {
             return;
         }
 
-        const response = await fetch(`api/orders`, {
+        const response = await fetch(`/api/orders`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 

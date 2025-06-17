@@ -218,7 +218,7 @@ function showAddProductModal() {
         });
     
         try {
-            const response = await fetch(`api/products`, {
+            const response = await fetch(`/api/products`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -242,7 +242,7 @@ function showAddProductModal() {
 // Загрузка категорий с сервера
 async function fetchCategories() {
     try {
-        const response = await fetch(`api/categories`, {
+        const response = await fetch(`/api/categories`, {
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
         const categories = await response.json();
@@ -256,7 +256,7 @@ async function fetchCategories() {
 async function updateCartBadge() {
     const token = localStorage.getItem('token');
     if (!token) return;
-    const res = await fetch(`api/cart`, {
+    const res = await fetch(`/api/cart`, {
         headers: { 'Authorization': `Bearer ${token}` }
     });
     if (!res.ok) return;
@@ -272,7 +272,7 @@ async function updateCartBadge() {
 
 async function checkSession() {
     try {
-        const response = await fetch(`api/check-session`, {
+        const response = await fetch(`/api/check-session`, {
             credentials: 'include'
         });
         const data = await response.json();
@@ -310,7 +310,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
 
             try {
-                const response = await fetch(`api/login`, {
+                const response = await fetch(`/api/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     credentials: 'include',

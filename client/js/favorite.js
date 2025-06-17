@@ -121,7 +121,7 @@ function showDateModal(productId) {
       return;
     }
     try {
-      const res = await fetch(`api/cart`, {
+      const res = await fetch(`/api/cart`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

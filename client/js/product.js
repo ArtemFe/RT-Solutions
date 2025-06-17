@@ -9,7 +9,7 @@ async function loadProduct() {
     }
 
     try {
-        const response = await fetch(`api/products`);
+        const response = await fetch(`/api/products`);
         if (!response.ok) throw new Error('Ошибка загрузки товаров');
         const products = await response.json();
         const product = products.find(p => p._id === productId);

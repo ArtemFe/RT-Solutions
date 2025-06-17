@@ -1,14 +1,14 @@
 import { showGlobalMessage } from './utils.js';
 
 async function fetchCart() {
-  const res = await fetch(`api/cart`, {
+  const res = await fetch(`/api/cart`, {
     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
   });
   return await res.json();
 }
 
 async function removeFromCart(productId) {
-  await fetch(`/cart/${productId}`, {
+  await fetch(`/api/cart/${productId}`, {
     method: 'DELETE',
     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
   });
@@ -16,7 +16,7 @@ async function removeFromCart(productId) {
 }
 
 async function updateCartQuantity(productId, quantity) {
-  await fetch(`/cart/${productId}`, {
+  await fetch(`/api/cart/${productId}`, {
     method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
