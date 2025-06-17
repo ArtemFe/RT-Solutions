@@ -1,3 +1,5 @@
+import { showGlobalMessage } from './utils.js';
+
 async function fetchFavorites() {
   const res = await fetch(`/favorites`, {
     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }

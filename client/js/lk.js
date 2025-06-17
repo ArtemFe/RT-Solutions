@@ -1,3 +1,5 @@
+import { showGlobalMessage } from './utils.js';
+
 async function loadProfile() {
   try {
     const res = await fetch(`api/profile`, {

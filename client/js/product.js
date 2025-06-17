@@ -1,3 +1,5 @@
+import { showGlobalMessage } from './utils.js';
+
 async function loadProduct() {
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('id');

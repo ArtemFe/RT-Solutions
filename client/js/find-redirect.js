@@ -1,3 +1,5 @@
+import { showGlobalMessage } from './utils.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('elastic');
     const searchBtn = document.querySelector('.button-search');

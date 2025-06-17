@@ -1,3 +1,5 @@
+import { showGlobalMessage } from './utils.js';
+
 let allProducts = [];
 
 const searchInput = document.getElementById('elastic');

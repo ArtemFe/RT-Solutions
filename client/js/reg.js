@@ -1,5 +1,7 @@
 'use strict'
 
+import { showGlobalMessage } from './utils.js';
+
 const apiUrl = '/api';
 
 window.addEventListener('DOMContentLoaded', () => {

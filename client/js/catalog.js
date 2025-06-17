@@ -1,3 +1,5 @@
+import { showGlobalMessage } from './utils.js';
+
 const apiUrl = '/api';
 
 async function loadCategoriesForFilters() {

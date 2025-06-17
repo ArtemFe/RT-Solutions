@@ -1,3 +1,5 @@
+import { showGlobalMessage } from './utils.js';
+
 async function fetchCart() {
   const res = await fetch(`api/cart`, {
     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
@@ -186,11 +188,3 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-function showGlobalMessage(text, type = 'success') {
-    const msg = document.getElementById('globalMessage');
-    msg.textContent = text;
-    msg.className = 'global-message' + (type === 'error' ? ' error' : '');
-    msg.style.display = 'block';
-    setTimeout(() => { msg.style.display = 'none'; }, 4000);
-  }
