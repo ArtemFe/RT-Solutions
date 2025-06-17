@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог</title>
+    <title>Корзина</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/cart.css">
 </head>
 <body>
     <header>
@@ -42,7 +43,38 @@
         <h1>Корзина</h1>
         <ul class="cart-list" id="cartList"></ul>
         <div class="cart-total" id="cartTotal"></div>
-        <button class="cart-checkout-btn" id="checkoutBtn">Оформить заказ</button>
+        <button class="btn-primary" id="checkoutBtn">Оформить заказ</button>
+        
+        <div id="checkoutForm" class="checkout-form" style="display: none;">
+            <h2>Оформление заказа</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Адрес доставки:</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Комментарий к заказу:</label>
+                    <textarea id="comment" name="comment"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Подтвердить заказ</button>
+                    <button type="button" class="btn-secondary" id="cancelCheckout">Отмена</button>
+                </div>
+            </form>
+        </div>
+        <div id="globalMessage" class="global-message"></div>
     </div>
 
     <footer>
@@ -107,5 +139,8 @@
     </footer>
     <script src="../js/login.js"></script>
     <script src="../js/cart.js"></script>
+    <script>
+        showGlobalMessage('Заказ оформлен! С вами свяжется менеджер для уточнения деталей.');
+    </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 'use strict';
 
-const apiUrl = 'http://localhost:5000/api';
+const apiUrl = '/api';
 
 // Функция для декодирования JWT токена
 function decodeToken(token) {
@@ -103,28 +103,46 @@ function updateHeaderForGuest() {
 function showAddProductModal() {
     const modal = document.createElement('div');
     modal.id = 'addProductModal';
+    modal.className = 'modal';
     modal.innerHTML = `
-        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;">
-            <div style="background: white; padding: 20px; border-radius: 5px; width: 400px; max-height: 90vh; overflow-y: auto;">
+        <div class="modal-content" style="max-width: 440px;">
+            <div class="modal-header">
                 <h2>Добавить товар</h2>
+                <button class="modal-close" type="button">&times;</button>
+            </div>
+            <div class="modal-body">
                 <form id="addProductForm">
-                    <label>Название:<br><input type="text" id="productName" placeholder="Введите название" required></label><br>
-                    <label>Мини-описание:<br><input type="text" id="productMiniDesc" placeholder="Введите краткое описание" required></label><br>
-                    <label>Описание:<br><textarea id="productDesc" placeholder="Введите описание товара" required></textarea></label><br>
-                    <label>Цена:<br><input type="number" id="productPrice" placeholder="Введите стоимость" required min="0"></label><br>
-                    <label>Категория:<br><select id="productCategory"></select></label><br>
-                    <label>Главное изображение:<br>
-                        <input type="file" id="productImage" accept="image/*" required>
-                    </label><br>
-                    <div id="extraImagesContainer">
-                        <label>Дополнительные изображения:</label><br>
+                    <div class="form-group">
+                        <label>Название:<br><input type="text" id="productName" placeholder="Введите название" required></label>
                     </div>
-                    <button type="button" id="addExtraImageBtn">Добавить ещё изображение</button><br>
-                    <div id="isRental" style="display: flex; align-items: center;">
-                        <label>Для аренды: <input type="checkbox" id="isRental" style="width: 20px; height: 20px;" ></label><br>
+                    <div class="form-group">
+                        <label>Мини-описание:<br><input type="text" id="productMiniDesc" placeholder="Введите краткое описание" required></label>
                     </div>
-                    <button type="submit">Добавить</button>
-                    <button type="button" onclick="document.getElementById('addProductModal').remove()">Закрыть</button>
+                    <div class="form-group">
+                        <label>Описание:<br><textarea id="productDesc" placeholder="Введите описание товара" required></textarea></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Цена:<br><input type="number" id="productPrice" placeholder="Введите стоимость" required min="0"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Категория:<br><select id="productCategory"></select></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Главное изображение:<br>
+                            <input type="file" id="productImage" accept="image/*" required>
+                        </label>
+                    </div>
+                    <div class="form-group" id="extraImagesContainer">
+                        <label>Дополнительные изображения:</label>
+                    </div>
+                    <button type="button" id="addExtraImageBtn" class="btn-secondary" style="margin-bottom: 12px;">Добавить ещё изображение</button>
+                    <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+                        <label>Для аренды: <input type="checkbox" id="isRental" style="width: 20px; height: 20px;"></label>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn-primary">Добавить</button>
+                        <button type="button" class="btn-secondary" id="closeAddProductModal">Закрыть</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -132,6 +150,11 @@ function showAddProductModal() {
     document.body.appendChild(modal);
 
     fetchCategories();
+
+    // Закрытие модалки
+    modal.querySelector('.modal-close').onclick = () => modal.remove();
+    modal.querySelector('#closeAddProductModal').onclick = () => modal.remove();
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
 
     const extraImagesContainer = document.getElementById('extraImagesContainer');
     const addExtraImageBtn = document.getElementById('addExtraImageBtn');
@@ -149,6 +172,8 @@ function showAddProductModal() {
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.textContent = 'Удалить';
+        removeBtn.className = 'btn-secondary';
+        removeBtn.style.marginLeft = '8px';
         removeBtn.onclick = () => wrapper.remove();
 
         wrapper.appendChild(input);
@@ -191,7 +216,7 @@ function showAddProductModal() {
         });
     
         try {
-            const response = await fetch(`${apiUrl}/products`, {
+            const response = await fetch(`api/products`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -215,7 +240,7 @@ function showAddProductModal() {
 // Загрузка категорий с сервера
 async function fetchCategories() {
     try {
-        const response = await fetch(`${apiUrl}/categories`, {
+        const response = await fetch(`api/categories`, {
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
         const categories = await response.json();
@@ -229,7 +254,7 @@ async function fetchCategories() {
 async function updateCartBadge() {
     const token = localStorage.getItem('token');
     if (!token) return;
-    const res = await fetch(`${apiUrl}/cart`, {
+    const res = await fetch(`api/cart`, {
         headers: { 'Authorization': `Bearer ${token}` }
     });
     if (!res.ok) return;
@@ -245,7 +270,7 @@ async function updateCartBadge() {
 
 async function checkSession() {
     try {
-        const response = await fetch(`${apiUrl}/check-session`, {
+        const response = await fetch(`api/check-session`, {
             credentials: 'include'
         });
         const data = await response.json();
@@ -283,7 +308,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
 
             try {
-                const response = await fetch(`${apiUrl}/login`, {
+                const response = await fetch(`api/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     credentials: 'include',
@@ -300,10 +325,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     console.log('Это админ после логина?', isAdmin); // Отладка
                     
                     updateHeaderForLoggedInUser(isAdmin);
-                    alert('Авторизация прошла успешно!');
+                    showGlobalMessage('Авторизация прошла успешно!');
                     window.location.href = '/';
                 } else {
-                    alert('Ошибка авторизации: токен не получен');
+                    showGlobalMessage('Ошибка авторизации: токен не получен', 'error');
                 }
             } catch (error) {
                 console.error('Ошибка:', error);

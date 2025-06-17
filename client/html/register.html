@@ -45,15 +45,20 @@
             <h2>Регистрация</h2>
         </center>
         <form id="registerForm" class="form">
-            <input id="email" class="input" type="email" placeholder="Почта">
-            <input id="username" class="input" type="text" placeholder="Логин">
-            <input id="password" class="input" type="password" placeholder="Пароль">
-            <input id="confirm-password" class="input" type="password" placeholder="Пароль еще раз">
+            <input id="email" class="input" type="email" placeholder="Почта" required>
+            <input id="username" class="input" type="text" placeholder="Логин" required>
+            <input id="firstName" class="input" type="text" placeholder="Имя" required>
+            <input id="lastName" class="input" type="text" placeholder="Фамилия" required>
+            <input id="middleName" class="input" type="text" placeholder="Отчество">
+            <input id="address" class="input" type="text" placeholder="Адрес">
+            <input id="password" class="input" type="password" placeholder="Пароль" required>
+            <input id="confirm-password" class="input" type="password" placeholder="Пароль еще раз" required>
             <div class="buttons">
                 <button class="btn" type="submit">Регистрация</button>
                 <button id="closeForm"><a href="/">Закрыть</a></button>
             </div>
         </form>
+        <div id="globalMessage" class="global-message"></div>
         <script src="../js/reg.js"></script>
     </div>
 </body>

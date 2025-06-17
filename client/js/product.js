@@ -7,7 +7,7 @@ async function loadProduct() {
     }
 
     try {
-        const response = await fetch(`${apiUrl}/products`);
+        const response = await fetch(`api/products`);
         if (!response.ok) throw new Error('Ошибка загрузки товаров');
         const products = await response.json();
         const product = products.find(p => p._id === productId);
@@ -113,11 +113,19 @@ async function loadProduct() {
                 alert('Войдите для добавления в корзину!');
                 return;
             }
-            const res = await fetch(`${apiUrl}/cart`, {
+            if (!dateFrom || !dateTo) {
+                alert('Пожалуйста, выберите обе даты!');
+                return;
+            }
+            if (new Date(dateFrom) >= new Date(dateTo)) {
+                alert('Дата окончания должна быть позже даты начала!');
+                return;
+            }
+            const res = await fetch(`/cart`, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ productId, quantity, dateFrom, dateTo })
             });
@@ -126,6 +134,36 @@ async function loadProduct() {
                 updateCartBadge();
             } else {
                 alert('Ошибка при добавлении в корзину');
+            }
+        });
+
+        // Добавление в избранное
+        document.querySelector('.add-to-fav-btn').addEventListener('click', async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Войдите для добавления в избранное!');
+                return;
+            }
+            try {
+                console.log('productId:', product._id);
+                console.log('token:', token);
+                const res = await fetch(`/favorites`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ productId: product._id })
+                });
+                if (res.ok) {
+                    alert('Товар добавлен в избранное!');
+                } else {
+                    const error = await res.json();
+                    alert(error.message || 'Ошибка при добавлении в избранное');
+                }
+            } catch (error) {
+                console.error('Произошла ошибка при добавлении в избранное:', error);
+                alert('Произошла ошибка при добавлении в избранное');
             }
         });
 

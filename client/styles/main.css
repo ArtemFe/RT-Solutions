@@ -19,3 +19,6 @@
 @import './blocks/values.css';
 @import './blocks/find.css';
 @import './blocks/lk.css';
+@import './blocks/favorite.css';
+@import './blocks/modal.css';
+@import './blocks/cart.css';

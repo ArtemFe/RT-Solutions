@@ -45,48 +45,74 @@
 
     <div class="contain">
         <main class="main-content">
-            <section class="profile-section">
-                <div class="profile-container">
-                    <div class="profile-avatar" id="profileAvatar">?</div>
-                    <form class="profile-form" id="profileForm">
-                        <div class="profile-row">
-                            <div>
-                                <label>Имя<br><input type="text" id="firstName"></label>
-                            </div>
-                            <div>
-                                <label>Логин<br><input type="text" id="username" disabled></label>
-                            </div>
-                        </div>
-                        <div class="profile-row">
-                            <div>
-                                <label>Фамилия<br><input type="text" id="lastName"></label>
-                            </div>
-                            <div>
-                                <label>Почта<br><input type="email" id="email" disabled></label>
-                            </div>
-                        </div>
-                        <div class="profile-row">
-                            <div>
-                                <label>Отчество<br><input type="text" id="middleName"></label>
-                            </div>
-                            <div>
-                                <label>Адрес<br><input type="text" id="address"></label>
-                            </div>
-                        </div>
-                        <div class="profile-row">
-                            <div>
-                                <label>Пароль<br>
-                                    <button type="button" disabled>поменять</button>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button type="submit">сохранить изменения</button>
-                            <button type="button" onclick="window.location.reload()">отмена</button>
-                        </div>
-                    </form>
+            <div class="lk-tabs">
+                <div class="lk-tab-nav">
+                    <button class="lk-tab-button active" data-tab="profile">Мои данные</button>
+                    <button class="lk-tab-button" data-tab="rentals">Мои активные аренды</button>
+                    <button class="lk-tab-button" data-tab="orders">Мои заказы</button>
                 </div>
-            </section>
+                <div id="profileTabContent" class="lk-tab-content active">
+                    <section class="profile-section">
+                        <div class="profile-container">
+                            <div class="profile-avatar" id="profileAvatar">?</div>
+                            <form class="profile-form" id="profileForm">
+                                <div class="profile-row">
+                                    <div>
+                                        <label>Имя<br><input type="text" id="firstName"></label>
+                                    </div>
+                                    <div>
+                                        <label>Логин<br><input type="text" id="username" disabled></label>
+                                    </div>
+                                </div>
+                                <div class="profile-row">
+                                    <div>
+                                        <label>Фамилия<br><input type="text" id="lastName"></label>
+                                    </div>
+                                    <div>
+                                        <label>Почта<br><input type="email" id="email" disabled></label>
+                                    </div>
+                                </div>
+                                <div class="profile-row">
+                                    <div>
+                                        <label>Отчество<br><input type="text" id="middleName"></label>
+                                    </div>
+                                    <div>
+                                        <label>Адрес<br><input type="text" id="address"></label>
+                                    </div>
+                                </div>
+                                <div class="profile-actions">
+                                    <button type="submit">сохранить изменения</button>
+                                    <button type="button" onclick="window.location.reload()">отмена</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div id="rentalsTabContent" class="lk-tab-content">
+                    <section class="active-rentals-section">
+                        <div class="active-rentals-container">
+                            <h2 class="section-title">Мои активные аренды</h2>
+                            <ul class="active-rentals-list" id="activeRentalsList">
+                                <!-- Активные арендованные товары будут здесь -->
+                            </ul>
+                            <div id="noActiveRentals" style="display: none; text-align: center; padding: 20px;">
+                                <p>У вас пока нет активных арендованных товаров.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="ordersTabContent" class="lk-tab-content">
+                    <section class="orders-section">
+                        <div class="orders-container">
+                            <h2 class="section-title">Мои заказы</h2>
+                            <ul class="orders-list" id="ordersList"></ul>
+                            <div id="noOrders" style="display: none; text-align: center; padding: 20px;">
+                                <p>У вас пока нет заказов.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </main>
     </div>
     
