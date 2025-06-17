@@ -114,6 +114,56 @@ router.post(
     }
 );
 
+// Редактировать товар (только для админа)
+router.put(
+    '/api/products/:id',
+    authMiddleware,
+    roleMiddleware(['Admin']),
+    upload.fields([
+        { name: 'image', maxCount: 1 },
+        { name: 'extraImages', maxCount: 9 }
+    ]),
+    async (req, res) => {
+        try {
+            const { name, minidesc, desc, price, category, is_rental } = req.body;
+            const update = { name, minidesc, desc, price, category, is_rental };
+
+            // Обработка изображений
+            if (req.files['image']) {
+                update.image = `/uploads/${req.files['image'][0].filename}`;
+            }
+            if (req.files['extraImages']) {
+                update.extraImages = req.files['extraImages'].map(f => `/uploads/${f.filename}`);
+            }
+
+            const product = await Product.findByIdAndUpdate(req.params.id, update, { new: true });
+            if (!product) return res.status(404).json({ message: 'Товар не найден' });
+
+            res.json({ message: 'Товар обновлён', product });
+        } catch (e) {
+            console.error(e);
+            res.status(500).json({ message: 'Ошибка при обновлении товара' });
+        }
+    }
+);
+
+// Удалить товар (только для админа)
+router.delete(
+    '/api/products/:id',
+    authMiddleware,
+    roleMiddleware(['Admin']),
+    async (req, res) => {
+        try {
+            const product = await Product.findByIdAndDelete(req.params.id);
+            if (!product) return res.status(404).json({ message: 'Товар не найден' });
+            res.json({ message: 'Товар удалён' });
+        } catch (e) {
+            console.error(e);
+            res.status(500).json({ message: 'Ошибка при удалении товара' });
+        }
+    }
+);
+
 // --- Авторизация и регистрация пользователей ---
 router.post(
     '/api/reg',

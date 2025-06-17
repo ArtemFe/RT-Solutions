@@ -20,24 +20,39 @@ class authController {
             if (!errors.isEmpty()) {
                 return res.status(400).json({ message: "Ошибка при регистрации", errors });
             }
-            const { email, username, password } = req.body;
+            const { email, username, password, firstName, lastName, middleName, address } = req.body;
+
+            // Проверяем, есть ли уже админ
+            const adminRole = await Role.findOne({ value: "Admin" });
+            const adminExists = await User.findOne({ roles: { $in: ["Admin"] } });
+
+            let roles = ["User"];
+            if (!adminExists) {
+                roles = ["Admin"];
+            }
+
             const candidate = await User.findOne({ email });
             if (candidate) {
                 return res.status(400).json({ message: "Пользователь с такой почтой уже существует" });
             }
             const hashPassword = bcrypt.hashSync(password, 7);
-            const userRole = await Role.findOne({ value: "User" });
-            if (!userRole) {
-                return res.status(500).json({ message: "Роль 'User' не найдена" });
-            }
-            const user = new User({ email, username, password: hashPassword, roles: [userRole.value] });
+            const user = new User({ 
+                email, 
+                username, 
+                password: hashPassword, 
+                roles,
+                firstName,
+                lastName,
+                middleName,
+                address
+            });
             console.log('Создан новый пользователь:', user); 
             await user.save();
             console.log('Пользователь сохранён в базу данных'); 
             return res.json({ message: "Пользователь успешно зарегистрирован", redirectUrl: "/login" });
         } catch (e) {
             console.log(e);
-            res.status(400).json({ message: 'Registration error' });
+            res.status(400).json({ message: 'Регистрация не удалась' });
         }
     }
 
@@ -81,7 +96,7 @@ class authController {
             });
         } catch (e) {
             console.log(e);
-            res.status(400).json({ message: 'Login error', error: e.message });
+            res.status(400).json({ message: 'Авторизация не успешна', error: e.message });
         }
     }
 
