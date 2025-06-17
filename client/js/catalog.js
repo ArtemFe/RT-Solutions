@@ -215,7 +215,7 @@ function addToCart(productId) {
                 return;
             }
 
-            const res = await fetch(`/api/cart`, {
+            const res = await fetch(`/cart`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
