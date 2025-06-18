@@ -10,7 +10,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const authRouter = require("./authRouter");
 const path = require("path");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 const cartRouter = require('./cartRouter');
 const favoriteRouter = require('./routers/favoriteRouter');
 const orderRouter = require('./orderRouter');
@@ -65,7 +65,7 @@ const start = async () => {
             next();
         });
 
-        app.use(express.static(path.join(__dirname, "../client")));
+        app.use(express.static(path.join(__dirname, "./client")));
 
         // Добавляем логирование запросов
         app.use((req, res, next) => {

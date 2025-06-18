@@ -1,0 +1,44 @@
+.simillar {
+    margin-top: 20px;
+}
+
+.simillar__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.simillar__title {
+    width: 390px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    border: 1px solid #000;
+}
+
+.simillar__buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.simillar__button {
+    width: 48px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.simillar__products {
+    margin-bottom: 120px;
+    margin-top: 32px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

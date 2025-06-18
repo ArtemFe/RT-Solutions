@@ -1,0 +1,24 @@
+@import './vars.css';
+
+@import './base.css';
+
+@import './blocks/about.css';
+@import './blocks/team.css';
+@import './blocks/reg_login.css';
+@import './blocks/catalog.css';
+@import './blocks/filters.css';
+@import './blocks/aims.css';
+@import './blocks/product.css';
+@import './blocks/rating.css';
+@import './blocks/product-desc.css';
+@import './blocks/modal.css';
+@import './blocks/breadcrumbs.css';
+@import './blocks/rent.css';
+@import './blocks/product-desc.css';
+@import './blocks/simillar.css';
+@import './blocks/values.css';
+@import './blocks/find.css';
+@import './blocks/lk.css';
+@import './blocks/favorite.css';
+@import './blocks/modal.css';
+@import './blocks/cart.css';

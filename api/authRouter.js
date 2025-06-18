@@ -14,7 +14,7 @@ const path = require('path');
 const User = require('./models/User');
 const cartRouter = require('./cartRouter');
 
-const staticUrl = '../client';
+const staticUrl = './client';
 
 // --- Multer для загрузки изображений ---
 const storage = multer.diskStorage({

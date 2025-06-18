@@ -1,0 +1,8 @@
+name: "RT-solutions"
+services:
+  app: 
+    container_name: 'app_container'
+    build: .
+    ports: 
+     - "53005:5002"
+    restart: unless-stopped

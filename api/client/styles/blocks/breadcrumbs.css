@@ -1,0 +1,14 @@
+.breadcrumbs {
+    margin-top: 60px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    span {
+        font-family: inter;
+        font-size: 16px;
+        font-weight: 500;
+        color: #878889;
+    }
+}
